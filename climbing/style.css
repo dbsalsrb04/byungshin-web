@@ -1,0 +1,38 @@
+* {
+    text-align: center;
+}
+
+.count_div {
+    margin: 5px;
+}
+
+.difficulty_div {
+    height: 20px;
+    width: 30px;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.try_count_div {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.success_count_div {
+    display: inline-block;
+}
+
+.try_count_button, .success_count_button {
+    background: linear-gradient(to right, rgb(255,255,255), rgb(0, 250, 154));
+
+    padding: 3px 8px;
+    min-height: 5px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.count {
+    font-size: 20px;
+    min-width: 25px;
+    display: inline-block;
+}
