@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
@@ -12,13 +12,15 @@
         <h3><a href="../../index.html">HOME</a></h3>
         <h1>사전 준비</h1>
         <hr>
-        날짜 선택
-        <textarea name="" id="">클라이밍 지점 선택</textarea>
-        클라이밍 지점 선택
-        클라이밍 종목 선택
-        <button>볼더링</button>
-        <button>리드</button>
-        <button>컴피</button>
+        
+        <input type="datetime-local" id="start_date"><br>
+        <input id="climbing_spot" type="text" placeholder="클라이밍 지점"><br>
+        <select name="climbing_type" id="climbing_type">
+            <option value="boulder">볼더링</option>
+            <option value="endurance">지구력</option>
+            <option value="competition">컴피</option>
+            <option value="lead">리드</option>
+        </select><br>
         
         
         <button><a href="../2recording/recording-climbing.html">운동 시작</a></button>

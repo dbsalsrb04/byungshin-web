@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>MINGYU WEB</title>
         <link href="pictures/smile-mingyu.jpg" rel="shortcut icon" type="image/x-icon">
+
+
+        <script>
+        function resolution() {
+            console.log(`${screen.width} * ${screen.height}`)
+            document.getElementById("resolution").innerText = `해상도: ${screen.width} * ${screen.height}`;
+        }
+        </script>
     </head>
 
-    <body>
+    <body onload="resolution()">
+        <b id="resolution"></b>
+        
        <h1>MINGYU WEB</h1>
        <hr>
        <h3><a target="_blank" href="https://github.com/dbsalsrb04/mingyu-web">MINGYU-WEB 깃허브</a></h3>
