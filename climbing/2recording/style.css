@@ -1,0 +1,28 @@
+* {
+    text-align: center;
+}
+
+table {
+    margin: auto;
+}
+
+td {
+    height: 36px;
+    width: 120px;
+}
+
+.try_count_button, .success_count_button {
+    background: linear-gradient(to right, rgb(255,255,255), rgb(0, 250, 154));
+
+    height: 30px;
+    width: 32px;
+    font-size: 20px;
+    border-radius: 15px;
+}
+
+.count {
+    font-weight: bold;
+    font-size: 20px;
+    min-width: 25px;
+    display: inline-block;
+}

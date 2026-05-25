@@ -4,15 +4,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
 
-        <title>WEIGHTS</title>
-        <link href="../pictures/smile-mingyu.jpg" rel="shortcut icon" type="image/x-icon">
+        <title>MINGYU WEB - Recording climbing</title>
+        <link href="../../pictures/smile-mingyu.jpg" rel="shortcut icon" type="image/x-icon">
         <link rel="stylesheet" href="style.css"/>
         <script src="counter.js"></script>
         <script src="watch.js"></script>
     </head>
 
     <body>
-        <h3><a href="../index.html">HOME</a></h3>
+        <h3><a href="../../index.html">HOME</a></h3>
         <h1>클라이밍 기록 테스트</h1>
         <hr>
 
@@ -21,179 +21,181 @@
         <button id="start_button" style="height: 40px; width: 80px; font-size: 15pt;" onclick="start_climbing()">시작</button>
 
         <hr>
-        <div>
+        <table border="1">
             <!-- 제목 행 -->
-            <div>
-                난이도 | 시도한 문제 | 성공한 문제 ----
-            </div>
+            <tr>
+                <th>난이도</th>
+                <th>시도한 문제</th>
+                <th>성공한 문제</th>
+            </tr>
 
             <!-- 검정 난이도 -->
-            <div class="count_div">
+            <tr>
                 <!-- 난이도 색깔 -->
-                <div class="difficulty_div" style="background-color: rgb(0, 0, 0);"></div>
+                <td bgcolor="#000000"></td>
                 <!-- 시도한 문제 수 -->
-                <div class="try_count_div">
+                <td>
                     <button class="try_count_button" onclick="increase_black_try()">+</button>
                     <div class="count" id="black_try">0</div>
                     <button class="try_count_button" onclick="decrease_black_try()">-</button>
-                </div>
+                </td>
                 <!-- 시도한 문제 중 성공한 문제 수 -->
-                <div class="success_count_div">
+                <td>
                     <button class="success_count_button" onclick="increase_black_success()">+</button>
                     <div class="count" id="black_success">0</div>
                     <button class="success_count_button" onclick="decrease_black_success()">-</button>
-                </div>
-            </div>
+                </td>
+            </tr>
             
             <!-- 갈색 난이도 -->
-            <div class="count_div">
-                <div class="difficulty_div" style="background-color: rgb(165,  42,  42);"></div>
-                <div class="try_count_div">
+            <tr>
+                <td bgcolor="#a52a2a"></td>
+                <td>
                     <button class="try_count_button" onclick="increase_brown_try()">+</button>
                     <div class="count" id="brown_try">0</div>
                     <button class="try_count_button" onclick="decrease_brown_try()">-</button>
-                </div>
-                <div class="success_count_div">
+                </td>
+                <td>
                     <button class="success_count_button" onclick="increase_brown_success()">+</button>
                     <div class="count" id="brown_success">0</div>
                     <button class="success_count_button" onclick="decrease_brown_success()">-</button>
-                </div>
-            </div>
+                </td>
+            </tr>
 
             <!-- 회색 난이도 -->
-            <div class="count_div">
-                <div class="difficulty_div" style="background-color: rgb(128, 128, 128);"></div>
-                <div class="try_count_div">
+            <tr>
+                <td bgcolor="#808080"></td>
+                <td>
                     <button class="try_count_button" onclick="increase_gray_try()">+</button>
                     <div class="count" id="gray_try">0</div>
                     <button class="try_count_button" onclick="decrease_gray_try()">-</button>
-                </div>
-                <div class="success_count_div">
+                </td>
+                <td>
                     <button class="success_count_button" onclick="increase_gray_success()">+</button>
                     <div class="count" id="gray_success">0</div>
                     <button class="success_count_button" onclick="decrease_gray_success()">-</button>
-                </div>
-            </div>
+                </td>
+            </tr>
 
             <!-- 보라 난이도 -->
-            <div class="count_div">
-                <div class="difficulty_div" style="background-color: rgb(150,   0, 150);"></div>
-                <div class="try_count_div">
+            <tr>
+                <td bgcolor="#800080"></td>
+                <td>
                     <button class="try_count_button" onclick="increase_purple_try()">+</button>
                     <div class="count" id="purple_try">0</div>
                     <button class="try_count_button" onclick="decrease_purple_try()">-</button>
-                </div>
-                <div class="success_count_div">
+                </td>
+                <td>
                     <button class="success_count_button" onclick="increase_purple_success()">+</button>
                     <div class="count" id="purple_success">0</div>
                     <button class="success_count_button" onclick="decrease_purple_success()">-</button>
-                </div>
+                </td>
             </div>
 
             <!-- 핑크 난이도 -->
-            <div class="count_div">
-                <div class="difficulty_div" style="background-color: rgb(255,   0, 255);"></div>
-                <div class="try_count_div">
+            <tr>
+                <td bgcolor="#ff00ff"></td>
+                <td>
                     <button class="try_count_button" onclick="increase_pink_try()">+</button>
                     <div class="count" id="pink_try">0</div>
                     <button class="try_count_button" onclick="decrease_pink_try()">-</button>
-                </div>
-                <div class="success_count_div">
+                </td>
+                <td>
                     <button class="success_count_button" onclick="increase_pink_success()">+</button>
                     <div class="count" id="pink_success">0</div>
                     <button class="success_count_button" onclick="decrease_pink_success()">-</button>
-                </div>
-            </div>
+                </td>
+            </tr>
 
             <!-- 빨강 난이도 -->
-            <div class="count_div">
-                <div class="difficulty_div" style="background-color: rgb(255,   0,   0);"></div>
-                <div class="try_count_div">
+            <tr>
+                <td bgcolor="#ff0000"></td>
+                <td>
                     <button class="try_count_button" onclick="increase_red_try()">+</button>
                     <div class="count" id="red_try">0</div>
                     <button class="try_count_button" onclick="decrease_red_try()">-</button>
-                </div>
-                <div class="success_count_div">
+                </td>
+                <td>
                     <button class="success_count_button" onclick="increase_red_success()">+</button>
                     <div class="count" id="red_success">0</div>
                     <button class="success_count_button" onclick="decrease_red_success()">-</button>
-                </div>
-            </div>
+                </td>
+            </tr>
 
             <!-- 파랑 난이도 -->
-            <div class="count_div">
-                <div class="difficulty_div" style="background-color: rgb(  0,   0, 255);"></div>
-                <div class="try_count_div">
+            <tr>
+                <td bgcolor="#0000ff""></td>
+                <td>
                     <button class="try_count_button" onclick="increase_blue_try()">+</button>
                     <div class="count" id="blue_try">0</div>
                     <button class="try_count_button" onclick="decrease_blue_try()">-</button>
-                </div>
-                <div class="success_count_div">
+                </td>
+                <td>
                     <button class="success_count_button" onclick="increase_blue_success()">+</button>
                     <div class="count" id="blue_success">0</div>
                     <button class="success_count_button" onclick="decrease_blue_success()">-</button>
-                </div>
-            </div>
+                </td>
+            </tr>
 
             <!-- 초록 난이도 -->
-            <div class="count_div">
-                <div class="difficulty_div" style="background-color: rgb(  0, 255,   0);"></div>
-                <div class="try_count_div">
+            <tr>
+                <td bgcolor="#00ff00"></td>
+                <td>
                     <button class="try_count_button" onclick="increase_green_try()">+</button>
                     <div class="count" id="green_try">0</div>
                     <button class="try_count_button" onclick="decrease_green_try()">-</button>
-                </div>
-                <div class="success_count_div">
+                </td>
+                <td>
                     <button class="success_count_button" onclick="increase_green_success()">+</button>
                     <div class="count" id="green_success">0</div>
                     <button class="success_count_button" onclick="decrease_green_success()">-</button>
-                </div>
-            </div>
+                </td>
+            </tr>
 
             <!-- 주황 난이도 -->
-            <div class="count_div">
-                <div class="difficulty_div" style="background-color: rgb(255, 128,   0);"></div>
-                <div class="try_count_div">
+            <tr>
+                <td bgcolor="ff8000"></td>
+                <td>
                     <button class="try_count_button" onclick="increase_orange_try()">+</button>
                     <div class="count" id="orange_try">0</div>
                     <button class="try_count_button" onclick="decrease_orange_try()">-</button>
-                </div>
-                <div class="success_count_div">
+                </td>
+                <td>
                     <button class="success_count_button" onclick="increase_orange_success()">+</button>
                     <div class="count" id="orange_success">0</div>
                     <button class="success_count_button" onclick="decrease_orange_success()">-</button>
-                </div>
-            </div>
+                </td>
+            </tr>
 
             <!-- 노랑 난이도 -->
-            <div class="count_div">
-                <div class="difficulty_div" style="background-color: rgb(255, 255,   0);"></div>
-                <div class="try_count_div">
+            <tr>
+                <td bgcolor="ffff00"></td>
+                <td>
                     <button class="try_count_button" onclick="increase_yellow_try()">+</button>
                     <div class="count" id="yellow_try">0</div>
                     <button class="try_count_button" onclick="decrease_yellow_try()">-</button>
-                </div>
-                <div class="success_count_div">
+                </td>
+                <td>
                     <button class="success_count_button" onclick="increase_yellow_success()">+</button>
                     <div class="count" id="yellow_success">0</div>
                     <button class="success_count_button" onclick="decrease_yellow_success()">-</button>
-                </div>
-            </div>
+                </td>
+            </tr>
 
             <!-- 하양 난이도 -->
-            <div class="count_div">
-                <div class="difficulty_div" style="background-color: rgb(255, 255, 255);"></div>
-                <div class="try_count_div">
+            <tr>
+                <td bgcolor="ffffff">WHITE</td>
+                <td>
                     <button class="try_count_button" onclick="increase_white_try()">+</button>
                     <div class="count" id="white_try">0</div>
                     <button class="try_count_button" onclick="decrease_white_try()">-</button>
-                </div>
-                <div class="success_count_div">
+                </td>
+                <td>
                     <button class="success_count_button" onclick="increase_white_success()">+</button>
                     <div class="count" id="white_success">0</div>
                     <button class="success_count_button" onclick="decrease_white_success()">-</button>
-                </div>
-            </div>
-        </div>
+                </td>
+            </tr>
+        </table>
     </body>
 </html>
