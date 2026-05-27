@@ -1,0 +1,40 @@
+* {
+    text-align: center;
+}
+
+td {
+    min-width: 34px;
+}
+
+thead {
+    background-color: #dfdfdf;
+}
+
+.date{
+    font-weight: bold;
+    width: 100px;
+    min-width: 100px;
+}
+
+.spot {
+    font-weight: bold;
+    width: 120px;
+    min-width: 120px;
+}
+
+.not_the_climb {
+    background-color: #dddddd;
+}
+
+.success {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.not_the_climb .success {
+    background-color: #dddddd;
+}
+
+.not_the_climb .spot {
+    font-size: 7pt;
+}

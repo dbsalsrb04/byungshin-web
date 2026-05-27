@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+
+        <title>MINGYU WEB - CLIMBING RECORDS</title>
+        <link href="../pictures/smile-mingyu.jpg" rel="shortcut icon" type="image/x-icon">
+
+        <script src="climbing.js"></script>
+        <link rel="stylesheet" href="climbing.css">
+    </head>
+
+    <body onload="load_climbing_data()">
+        <a href="../index.html">HOME</a>
+        <h1>클라이밍 기록</h1>
+        <hr>
+
+        <button onclick="load_climbing_data()">데이터 새로고침</button>
+        
+        <table id="record_table" border="0">
+            <thead>
+                <tr>
+                    <th colspan="2" rowspan="2"></th>
+                    <th colspan="22">난이도</th>
+                </tr>
+                <tr>
+                    <th bgcolor="#000000" colspan="2"></th>
+                    <th bgcolor="#A52A2A" colspan="2"></th>
+                    <th bgcolor="#808080" colspan="2"></th>
+                    <th bgcolor="#800080" colspan="2"></th>
+                    <th bgcolor="#FF00FF" colspan="2"></th>
+                    <th bgcolor="#FF0000" colspan="2"></th>
+                    <th bgcolor="#0000FF" colspan="2"></th>
+                    <th bgcolor="#00FF00" colspan="2"></th>
+                    <th bgcolor="#FF8000" colspan="2"></th>
+                    <th bgcolor="#FFFF00" colspan="2"></th>
+                    <th bgcolor="#FFFFFF" colspan="2">WHITE</th>
+                </tr>
+                <tr>
+                    <th>날짜</th>
+                    <th>지점</th>
+                    <th>성공</th>
+                    <th>시도</th>
+                    <th>성공</th>
+                    <th>시도</th>
+                    <th>성공</th>
+                    <th>시도</th>
+                    <th>성공</th>
+                    <th>시도</th>
+                    <th>성공</th>
+                    <th>시도</th>
+                    <th>성공</th>
+                    <th>시도</th>
+                    <th>성공</th>
+                    <th>시도</th>
+                    <th>성공</th>
+                    <th>시도</th>
+                    <th>성공</th>
+                    <th>시도</th>
+                    <th>성공</th>
+                    <th>시도</th>
+                    <th>성공</th>
+                    <th>시도</th>
+                </tr>
+            </thead>
+            <tbody id="record_tbody">
+            </tbody>
+        </table>
+        
+    </body>
+</html>
