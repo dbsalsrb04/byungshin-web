@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+
+        <title></title>
+
+        <script src="index.js" defer></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body onload="init()">
+        <a href="../index.html">HOME</a>
+        <h1><a href="../climbing/climbing.html">클라이밍 기록</a> Test</h1>
+        <hr>
+        <button onclick="show_red_records()">1. 빨강 난이도만 통계</button><br>
+        <button onclick="show_red_success_rates()">2. 빨강 난이도 완등률 보기</button><br>
+        <button onclick="show_red_total()">3. 빨강 난이도 푼 문제 수</button><br>
+        <button onclick="show_only_theclimb_yangjae('red')">4. [더클라임 양재]만 보기</button><br>
+        <br>
+        <p>YYYY-MM-DD | 더클라임 XX | (성공 | 시도 / 완등률)</p>
+        <div id="div1"></div>
+    </body>
+</html>
