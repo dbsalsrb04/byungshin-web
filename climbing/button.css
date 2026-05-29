@@ -1,0 +1,70 @@
+#button_bar {
+    z-index: 1000;
+    position: sticky;
+    top: 0px;
+
+    background-color: #F8F8FA;
+
+}
+
+.display_button {
+    text-align: center;
+    font-size: 9pt;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+#black_display_button {
+    background: linear-gradient(to right, #000000, #FFFFFF);
+    border-color: #000000;
+}
+
+#brown_display_button {
+    background: linear-gradient(to right, #A52A2A, #FFFFFF);
+    border-color: #A52A2A;
+}
+
+#gray_display_button {
+    background: linear-gradient(to right, #808080, #FFFFFF);
+    border-color: #808080;
+}
+
+#purple_display_button {
+    background: linear-gradient(to right, #800080, #FFFFFF);
+    border-color: #800080;
+}
+
+#pink_display_button {
+    background: linear-gradient(to right, #FF00FF, #FFFFFF);
+    border-color: #FF00FF;
+}
+
+#red_display_button {
+    background: linear-gradient(to right, #FF0000, #FFFFFF);
+    border-color: #FF0000;
+}
+
+#blue_display_button {
+    background: linear-gradient(to right, #0000FF, #FFFFFF);
+    border-color: #0000FF;
+}
+
+#green_display_button {
+    background: linear-gradient(to right, #00FF00, #FFFFFF);
+    border-color: #00FF00;
+}
+
+#orange_display_button {
+    background: linear-gradient(to right, #FF8000, #FFFFFF);
+    border-color: #FF8000;
+}
+
+#yellow_display_button {
+    background: linear-gradient(to right, #FFFF00, #FFFFFF);
+    border-color: #FFFF00;
+}
+
+#white_display_button {
+    background: linear-gradient(to right, #FFFFFF, #FFFFFF);
+    border-color: #FFFFFF;
+}

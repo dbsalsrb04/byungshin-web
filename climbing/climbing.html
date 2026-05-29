@@ -7,66 +7,81 @@
         <title>MINGYU WEB - CLIMBING RECORDS</title>
         <link href="../pictures/smile-mingyu.jpg" rel="shortcut icon" type="image/x-icon">
 
-        <script src="climbing.js"></script>
+        <script src="climbing.js" defer></script>
         <link rel="stylesheet" href="climbing.css">
+        <link rel="stylesheet" href="button.css">
     </head>
 
-    <body onload="load_climbing_data()">
+    <body onload="init()">
         <a href="../index.html">HOME</a>
         <h1>클라이밍 기록</h1>
         <hr>
-
-        <button onclick="load_climbing_data()">데이터 새로고침</button>
         
-        <table id="record_table" border="0">
-            <thead>
-                <tr>
-                    <th colspan="2" rowspan="2"></th>
-                    <th colspan="22">난이도</th>
-                </tr>
-                <tr>
-                    <th bgcolor="#000000" colspan="2"></th>
-                    <th bgcolor="#A52A2A" colspan="2"></th>
-                    <th bgcolor="#808080" colspan="2"></th>
-                    <th bgcolor="#800080" colspan="2"></th>
-                    <th bgcolor="#FF00FF" colspan="2"></th>
-                    <th bgcolor="#FF0000" colspan="2"></th>
-                    <th bgcolor="#0000FF" colspan="2"></th>
-                    <th bgcolor="#00FF00" colspan="2"></th>
-                    <th bgcolor="#FF8000" colspan="2"></th>
-                    <th bgcolor="#FFFF00" colspan="2"></th>
-                    <th bgcolor="#FFFFFF" colspan="2">WHITE</th>
-                </tr>
-                <tr>
-                    <th>날짜</th>
-                    <th>지점</th>
-                    <th>성공</th>
-                    <th>시도</th>
-                    <th>성공</th>
-                    <th>시도</th>
-                    <th>성공</th>
-                    <th>시도</th>
-                    <th>성공</th>
-                    <th>시도</th>
-                    <th>성공</th>
-                    <th>시도</th>
-                    <th>성공</th>
-                    <th>시도</th>
-                    <th>성공</th>
-                    <th>시도</th>
-                    <th>성공</th>
-                    <th>시도</th>
-                    <th>성공</th>
-                    <th>시도</th>
-                    <th>성공</th>
-                    <th>시도</th>
-                    <th>성공</th>
-                    <th>시도</th>
-                </tr>
-            </thead>
-            <tbody id="record_tbody">
-            </tbody>
-        </table>
+        <div id="button_bar">
+            <button class="display_button" id="black_display_button" onclick="display_column('black')">숨기기</button>
+            <button class="display_button" id="brown_display_button" onclick="display_column('brown')">숨기기</button>
+            <button class="display_button" id="gray_display_button" onclick="display_column('gray')">숨기기</button>
+            <button class="display_button" id="purple_display_button" onclick="display_column('purple')">숨기기</button>
+            <button class="display_button" id="pink_display_button" onclick="display_column('pink')">숨기기</button>
+            <button class="display_button" id="red_display_button" onclick="display_column('red')">숨기기</button>
+            <button class="display_button" id="blue_display_button" onclick="display_column('blue')">숨기기</button>
+            <button class="display_button" id="green_display_button" onclick="display_column('green')">숨기기</button>
+            <button class="display_button" id="orange_display_button" onclick="display_column('orange')">숨기기</button>
+            <button class="display_button" id="yellow_display_button" onclick="display_column('yellow')">숨기기</button>
+            <button class="display_button" id="white_display_button" onclick="display_column('white')">숨기기</button>
+        </div>
+
+        <div id="table_container">
+            <table id="record_table" border="0">
+                <thead>
+                    <tr>
+                        <th colspan="2" rowspan="2"></th>
+                        <th colspan="22">난이도</th>
+                    </tr>
+                    <tr>
+                        <th class="black" bgcolor="#000000" colspan="2"></th>
+                        <th class="brown" bgcolor="#A52A2A" colspan="2"></th>
+                        <th class="gray" bgcolor="#808080" colspan="2"></th>
+                        <th class="purple" bgcolor="#800080" colspan="2"></th>
+                        <th class="pink" bgcolor="#FF00FF" colspan="2"></th>
+                        <th class="red" bgcolor="#FF0000" colspan="2"></th>
+                        <th class="blue" bgcolor="#0000FF" colspan="2"></th>
+                        <th class="green" bgcolor="#00FF00" colspan="2"></th>
+                        <th class="orange" bgcolor="#FF8000" colspan="2"></th>
+                        <th class="yellow" bgcolor="#FFFF00" colspan="2"></th>
+                        <th class="white" bgcolor="#FFFFFF" colspan="2">WHITE</th>
+                    </tr>
+                    <tr>
+                        <th>날짜</th>
+                        <th>지점</th>
+                        <th class="black">성공</th>
+                        <th class="black">시도</th>
+                        <th class="brown">성공</th>
+                        <th class="brown">시도</th>
+                        <th class="gray">성공</th>
+                        <th class="gray">시도</th>
+                        <th class="purple">성공</th>
+                        <th class="purple">시도</th>
+                        <th class="pink">성공</th>
+                        <th class="pink">시도</th>
+                        <th class="red">성공</th>
+                        <th class="red">시도</th>
+                        <th class="blue">성공</th>
+                        <th class="blue">시도</th>
+                        <th class="green">성공</th>
+                        <th class="green">시도</th>
+                        <th class="orange">성공</th>
+                        <th class="orange">시도</th>
+                        <th class="yellow">성공</th>
+                        <th class="yellow">시도</th>
+                        <th class="white">성공</th>
+                        <th class="white">시도</th>
+                    </tr>
+                </thead>
+                <tbody id="record_tbody">
+                </tbody>
+            </table>
+        </div>
         
     </body>
 </html>

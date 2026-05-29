@@ -2,8 +2,21 @@
     text-align: center;
 }
 
+html {
+    background-color: #F8F8FA;
+}
+
 table {
     margin: auto;
+}
+
+.table_container {
+    overflow-x: auto;
+}
+
+th {
+    height: 23px;
+    min-height: 23px;
 }
 
 td {
@@ -11,22 +24,27 @@ td {
 }
 
 thead {
-    background-color: #dfdfdf;
+    z-index: 999;
+    background-color: #DFDFDF;
+    position: sticky;
+    top: 25px;
 }
 
-.date{
+.date {
+    font-size: 9pt;
+    font-weight: bold;
+    width: 70px;
+    min-width: 70px;
+}
+
+.spot {
+    font-size: 10pt;
     font-weight: bold;
     width: 100px;
     min-width: 100px;
 }
 
-.spot {
-    font-weight: bold;
-    width: 120px;
-    min-width: 120px;
-}
-
-.not_the_climb {
+.not_theclimb {
     background-color: #dddddd;
 }
 
@@ -35,10 +53,10 @@ thead {
     font-weight: bold;
 }
 
-.not_the_climb .success {
+.not_theclimb .success {
     background-color: #dddddd;
 }
 
-.not_the_climb .spot {
-    font-size: 7pt;
+.not_theclimb .spot {
+    font-size: 6pt;
 }
