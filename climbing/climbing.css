@@ -8,6 +8,7 @@ html {
 
 table {
     margin: auto;
+    border-collapse: collapse;
 }
 
 th {
@@ -21,7 +22,7 @@ td {
 
 thead {
     z-index: 999;
-    background-color: #DFDFDF;
+    background-color: #CCCCCC;
     position: sticky;
     top: 23px;
 }
