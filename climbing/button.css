@@ -6,8 +6,8 @@
     background-color: #F8F8FA;
 
     display: inline;
-    overflow-x: auto;
-    white-space: nowrap;
+    overflow: hidden;
+    white-space:nowrap;
 }
 
 .display_button {
