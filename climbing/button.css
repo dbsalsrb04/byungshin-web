@@ -1,10 +1,10 @@
 #button_bar {
     z-index: 1000;
     position: sticky;
-    top: 2px;
+    top: 0px;
+    white-space: nowrap;
 
     background-color: #F8F8FA;
-    width: 100%;
 }
 
 .display_button {

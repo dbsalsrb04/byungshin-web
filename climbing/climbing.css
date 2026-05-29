@@ -10,10 +10,6 @@ table {
     margin: auto;
 }
 
-.table_container {
-    overflow-x: auto;
-}
-
 th {
     height: 23px;
     min-height: 23px;
@@ -27,7 +23,7 @@ thead {
     z-index: 999;
     background-color: #DFDFDF;
     position: sticky;
-    top: 25px;
+    top: 23px;
 }
 
 .date {
