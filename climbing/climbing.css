@@ -18,6 +18,7 @@ th {
 
 td {
     min-width: 34px;
+    border-bottom: 1px solid #DDDDDD;
 }
 
 thead {
@@ -48,6 +49,8 @@ thead {
 .success {
     background-color: #EEEEEE;
     font-weight: bold;
+    
+    border-left: 2px solid #000000;
 }
 
 .not_theclimb .success {
