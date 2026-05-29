@@ -9,6 +9,22 @@
     white-space: nowrap;
 }
 
+@media (max-width: 768px) {
+    #button_bar {
+        z-index: 1000;
+        position: sticky;
+        top: 0px;
+
+        width: 470px;
+        margin: auto;
+        
+        background-color: #F8F8FA;
+
+        overflow: auto;
+        white-space: nowrap;
+    }
+}
+
 .display_button {
     text-align: center;
     font-size: 9pt;
