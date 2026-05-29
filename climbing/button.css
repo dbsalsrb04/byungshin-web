@@ -5,10 +5,9 @@
     
     background-color: #F8F8FA;
 
-    display: flex;
-    white-space: nowrap;
-    justify-content: center;
+    display: inline;
     overflow-x: auto;
+    white-space: nowrap;
 }
 
 .display_button {
