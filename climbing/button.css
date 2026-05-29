@@ -2,9 +2,13 @@
     z-index: 1000;
     position: sticky;
     top: 0px;
-    white-space: nowrap;
-
+    
     background-color: #F8F8FA;
+
+    display: flex;
+    white-space: nowrap;
+    justify-content: center;
+    overflow-x: auto;
 }
 
 .display_button {
