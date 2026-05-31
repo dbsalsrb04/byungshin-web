@@ -6,13 +6,29 @@
 
         <title>WEIGHTS</title>
         <link href="../pictures/smile-mingyu.jpg" rel="shortcut icon" type="image/x-icon">
+
+        <script src="weights.js"></script>
+        <link rel="stylesheet" href="weights.css">
     </head>
 
-    <body>
+    <body onload="load_data()">
         <a href="../../index.html">HOME</a>
        <h1>몸무게</h1>
        <hr>
-        <h1>아직 시작도 못함</h1>
+
+        <div id="table_container">
+            <table >
+                <thead>
+                    <tr>
+                        <th id="date_header">날짜</th>
+                        <th id="weight_header">몸무게</th>
+                    </tr>
+                </thead>
+                <tbody id="record_tbody">
+
+                </tbody>
+            </table>
+        </div>
         
     </body>
 </html>

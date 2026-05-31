@@ -1,0 +1,24 @@
+* {
+    text-align: center;
+}
+
+html {
+    background-color: #F8F8FA;
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #DDDDDD;
+}
+
+#date_header {
+    width: 120px;
+}
+
+.even_row {
+    background-color: #DDDDDD;
+}
