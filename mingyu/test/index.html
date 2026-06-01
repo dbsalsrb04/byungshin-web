@@ -7,6 +7,7 @@
 
         <title>BYUNGSHIN WEB - TEST</title>
 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="index.js" defer></script>
         <link rel="stylesheet" href="style.css">
     </head>
@@ -14,6 +15,10 @@
     <body onload="init()">
         <a href="../../index.html">HOME</a>
         <h1><a href="../climbing/climbing.html">클라이밍 기록</a> Test</h1>
+        <hr>
+
+        <canvas id="my_chart" width="400" height="200"></canvas>
+
         <hr>
         <button onclick="show_red_records()">1. 빨강 난이도만 통계</button><br>
         <button onclick="show_red_success_rates()">2. 빨강 난이도 완등률 보기</button><br>

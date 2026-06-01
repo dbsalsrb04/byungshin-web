@@ -1,32 +1,3 @@
-const ctx = document.getElementById("my_chart").getContext('2d');
-const my_chart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ["1번","2번","3번","4번"],
-        datasets: [{
-            label: '데이터셋라벨',
-            data: [7,12,9,4],
-            backgroundColor: [
-                '#AAAAAA',
-                '#BBBBBB',
-                '#CCCCCC',
-                '#DDDDDD'
-            ],
-            borderColor: [
-                '#AAAAAA',
-                '#BBBBBB',
-                '#CCCCCC',
-                '#DDDDDD'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false
-    }
-});
-
 async function load_data() {
     
     const response = await fetch("weight_data.json");
