@@ -12,11 +12,11 @@ function chartCtx(canvas_id, x_data, y_data) {
             datasets: [{ // 데이터 속성
                 label: '몸무게', // 데이터 제목
                 data: weights, // 데이터
-                pointRadius: 5,
-                pointHoverRadius: 10,
+                pointRadius: 3.5,
+                pointHoverRadius: 7,
                 backgroundColor: [ "#CCCCCC" ],
                 borderColor: [ "#000000" ],
-                // borderWidth: 1
+                // borderWidth: 2.5
                 }
             ]
         },
