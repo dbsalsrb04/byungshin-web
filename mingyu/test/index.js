@@ -1,33 +1,57 @@
 let data = [];
 let flat_records = [];
 
-const ctx w= document.getElementById("my_chart").getContext('2d');
-const my_chart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ["1번","2번","3번","4번"],
-        datasets: [{
-            label: '데이터셋라벨',
-            data: [7,12,9,4],
-            backgroundColor: [
-                '#AAAAAA',
-                '#BBBBBB',
-                '#CCCCCC',
-                '#DDDDDD'
-            ],
-            borderColor: [
-                '#AAAAAA',
-                '#BBBBBB',
-                '#CCCCCC',
-                '#DDDDDD'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        maintainAspectRatio: false
-    }
-});
+// 차트 그리기
+function chartCtx(canvas_id, x_data, y_data) {
+    const ctx = document.getElementById("my_chart").getContext('2d');
+    const my_chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["1번","2번","3번","4번"], // x축 데이터
+            datasets: [{ // 데이터 속성
+                label: '1번째 라벨', // 데이터 제목
+                data: [7,12,9,4], // 데이터
+                // backgroundColor: [ "#FFFFFF" ],
+                // borderColor: [ "#FFFFFF" ],
+                // borderWidth: 1
+                }
+                ,{
+                    label: "2번째 라벨",
+                    data: [3,4,5,8]
+                }
+            ]
+        },
+        options: {
+            responsive: false, // 반응형(기본값 true) ?크기자동변경 등...
+            maintainAspectRatio: false, // 크기 고정.
+            plugins: {
+                tooltip: { // 툴팁
+                    enabled: true, // 튤팁 활성화 (기본값 true)
+                    backgroundColor: '#FF0000', // 툴팁 색상
+                    padding: 10 // 툴팁 패딩
+                },
+                legend: { // 범례
+                    display: true, // 범례 보이기
+                    position: 'bottom' // 범례 위치
+                }
+            },
+            scales: { // x,y축 설정 관련
+                x: { // x축
+                    grid: { display: false } // x축 격자선(=세로선) 숨김
+                },
+                y: {
+                    min: 0, // y축 최솟값
+                    max: 15, // y축 최댓값
+                    border: { dash: [0,0] } // 점선
+                }
+            },
+            title: {
+                display: true,
+                text: "FUCK"
+            }
+        }
+    });
+}
 
 async function load_data() {
     
@@ -161,4 +185,5 @@ function show_only_theclimb_yangjae(color) {
 async function init(){
     const data = await load_data();
     flat_records = flatten_records(data);
+    chartCtx();
 }

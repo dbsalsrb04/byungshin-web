@@ -19,6 +19,18 @@ th {
     width: 120px;
 }
 
+#chart_container {
+    margin: auto;
+    width: 800px;
+    height: 400px;
+    background-color: #DDFFFF;
+}
+
+#weight_chart {
+    width: 800px;
+    margin: auto;
+}
+
 .even_row {
     background-color: #DDDDDD;
 }

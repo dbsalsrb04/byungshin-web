@@ -7,27 +7,47 @@
         <title>WEIGHTS</title>
         <link href="../pictures/smile-mingyu.jpg" rel="shortcut icon" type="image/x-icon">
 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="weights.js"></script>
         <link rel="stylesheet" href="weights.css">
     </head>
     
-    <body onload="load_data()">
+    <body onload="init()">
         <a href="../../index.html">HOME</a>
         <h1>몸무게</h1>
         <hr>
-
-        <div id="table_container">
-            <table >
-                <thead>
-                    <tr>
-                        <th id="date_header">날짜</th>
-                        <th id="weight_header">몸무게</th>
-                    </tr>
-                </thead>
-                <tbody id="record_tbody">
-
-                </tbody>
-            </table>
+        
+        <!-- 
+            만약 차트를 왼쪽에 딸려오게 하고 싶다면,
+            #contexts {
+                display: flex;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            #chart_container {
+                position: sticky;
+                top: 50px; // 수치는 알아서
+            }
+            그리고 margin: auto; 전부 삭제
+        -->
+        <div id="contents">
+            <div id="chart_container">
+                <canvas id="weight_chart"></canvas>
+            </div>
+            
+            <div id="table_container">
+                <table >
+                    <thead>
+                        <tr>
+                            <th id="date_header">날짜</th>
+                            <th id="weight_header">몸무게</th>
+                        </tr>
+                    </thead>
+                    <tbody id="record_tbody">
+                        
+                    </tbody>
+                </table>
+            </div>
         </div>
         
     </body>
