@@ -71,7 +71,7 @@ async function load_data() {
         // 헤더 제외 짝수행일 때
         // 배경색 약간 진하게 해서 가시성 향상
         if (i++%2 === 0) { tr.className = "even_row"; }
-        tr.innerHTML = `<td>${Number(record.date)}</td><td>${Number(record.weight).toFixed(1)}</td>`; // toFixed() => String
+        tr.innerHTML = `<td>${record.date}</td><td>${Number(record.weight).toFixed(1)}</td>`; // toFixed() => String
 
         tbody.appendChild(tr);
     }
