@@ -29,10 +29,10 @@ function chartCtx(canvas_id, x_data, y_data) {
                 //     backgroundColor: '#FF0000', // 툴팁 색상
                 //     padding: 10 // 툴팁 패딩
                 // },
-                // legend: { // 범례
-                //     display: true, // 범례 보이기
-                //     position: 'bottom' // 범례 위치
-                // }
+                legend: { // 범례
+                    display: false, // 범례 보이기
+                    position: 'bottom' // 범례 위치
+                }
             },
             scales: { // x,y축 설정 관련
                 x: { // x축
@@ -44,10 +44,10 @@ function chartCtx(canvas_id, x_data, y_data) {
                     border: { dash: [0,0] } // 점선
                 }
             },
-            title: {
-                display: true,
-                text: "WEIGHTS GRAPH"
-            }
+            // title: {
+            //     display: true,
+            //     text: "WEIGHTS GRAPH"
+            // }
         }
     });
 }
