@@ -1,0 +1,23 @@
+#success_chart_container {
+    margin: auto;
+    width: 800px;
+    height: 400px;
+    background-color: #EEFFFF;
+}
+
+#success_rate_chart {
+    width: 800px;
+}
+
+@media (max-width: 768px) {
+    #success_chart_container {
+        margin: auto;
+        width: 355px;
+        height: 190px;
+        background-color: #EEFFFF;
+    }
+    #success_rate_chart {
+        width: 350px;
+        margin: auto;
+    }
+}

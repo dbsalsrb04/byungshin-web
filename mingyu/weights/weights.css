@@ -34,12 +34,12 @@ th {
 @media (max-width: 768px) {
     #chart_container {
         margin: auto;
-        width: 360px;
+        width: 355px;
         height: 190px;
         background-color: #DDFFFF;
     }
     #weight_chart {
-        width: 360px;
+        width: 350px;
         margin: auto;
     }
 }

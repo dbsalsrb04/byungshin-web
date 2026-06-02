@@ -144,11 +144,106 @@ function apply_saved_columns() {
     });
 }
 
+// 차트 그리기
+// 모든 난이도 완등률 차트
+// 함수 내에서 데이터 가공하는 게 더 나을 듯
+// x축은 방문한 모든 날짜.
+function successRateChart(canvas_id, climbing_data) {
+    let dates = [];
+    let success_rates = {
+         black: [],
+         brown: [],
+          gray: [],
+        purple: [],
+          pink: [],
+           red: [],
+          blue: [],
+         green: [],
+        orange: [],
+        yellow: [],
+         white: []
+    }
+
+    const chart_dataset = [];
+    
+    for (const record of climbing_data) {
+        if (record.spot.includes("더클라임")) {
+            dates.push(`${record.spot}\n${record.date}`);
+            // 완등률 구하기
+            // rate_color: success_rates의 각 색깔 리스트
+            // climbing_data의 tries와 successes 의 key 이름이 똑같음.
+            // record.successes[rate_color] => data에서 현재 가리키고 있는 방문일의 특정 난이도(=색깔)의 완등 개수
+            for (const rate_color in success_rates) {
+                let rate = Number((record.successes[rate_color] / record.tries[rate_color] * 100).toFixed(1));
+                success_rates[rate_color].push(rate)
+            }
+        }
+        
+    }
+
+    // chart의 data 속성 중 datasets 속성에 넣을 값 미리 넣기
+    for (const rate_color in success_rates) {
+        chart_dataset.push({ // 데이터 속성
+            label: rate_color, // 데이터 제목
+            data: success_rates[rate_color], // 데이터
+            pointRadius: 3.5,
+            pointHoverRadius: 7,
+            backgroundColor: COLORS[rate_color],
+            borderColor: COLORS[rate_color],
+            // borderWidth: 2.5
+        });
+    }
+    
+    console.log(chart_dataset);
+    console.log(dates);
+    console.log(success_rates);
+
+
+    const ctx = document.getElementById(canvas_id).getContext('2d');
+    const my_chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates, // x축 데이터
+            datasets: chart_dataset // 데이터셋 미리 정의
+        },
+        options: {
+            responsive: false, // 반응형(기본값 true) ?크기자동변경 등...
+            maintainAspectRatio: false, // 크기 고정.
+            plugins: {
+                tooltip: { // 툴팁
+                    enabled: true, // 툴팁 활성화 (기본값 true)
+                    backgroundColor: '#808080', // 툴팁 색상
+                    padding: 10 // 툴팁 패딩
+                },
+                legend: { // 범례
+                    display: true, // 범례 보이기
+                    position: 'left', // 범례 위치
+                }
+            },
+            scales: { // x,y축 설정 관련
+                x: { // x축
+                    grid: { display: false } // x축 격자선(=세로선) 숨김
+                },
+                y: {
+                    // min: 61, // y축 최솟값
+                    // max: 64, // y축 최댓값
+                    border: { dash: [0,0] } // 점선
+                }
+            },
+            // title: {
+            //     display: true,
+            //     text: "WEIGHTS GRAPH"
+            // }
+        }
+    });
+}
+
 // climbing.html 의
 // <body onload="init()">
 // 에서 처음 실행되는 함수가 하나가 아니기 때문에
 // init() 함수로 통합
 async function init() {
-    await load_climbing_data();
+    const data = await load_climbing_data();
     apply_saved_columns();
+    successRateChart("success_rate_chart", climbing_data=data);
 }

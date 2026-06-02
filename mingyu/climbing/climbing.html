@@ -7,8 +7,10 @@
         <title>BYUNGSHIN WEB - CLIMBING RECORDS</title>
         <link href="../pictures/smile-mingyu.jpg" rel="shortcut icon" type="image/x-icon">
 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="climbing.js" defer></script>
         <link rel="stylesheet" href="climbing.css">
+        <link rel="stylesheet" href="climbing_chart.css">
         <link rel="stylesheet" href="button.css">
     </head>
 
@@ -18,6 +20,10 @@
         * <b>모바일</b>의 경우<br>
         * 화면을 <b>최대로 축소</b>해주세요!
         <hr>
+
+        <div id="success_chart_container">
+            <canvas id="success_rate_chart"></canvas>
+        </div>
         
         <div id="button_bar">
             <button class="display_button" id="black_display_button" onclick="display_column('black')">숨기기</button>
