@@ -210,11 +210,16 @@ function successRateChart(canvas_id, climbing_data) {
         options: {
             responsive: false, // 반응형(기본값 true) ?크기자동변경 등...
             maintainAspectRatio: false, // 크기 고정.
+            hover: { // 그래프에 커서 올려졌을 때 해당 난이도의 그래프가 반응.
+                mode: "dataset",
+                intersect: true
+            },
+            // 플러그인
             plugins: {
                 tooltip: { // 툴팁
                     enabled: true, // 툴팁 활성화 (기본값 true)
                     // intersect: true, // ?
-                    // mode: 'index',
+                    // mode: 'index', // 툴팁 팝업에서 그 x축에 대한 모든 y축 정보.
                     backgroundColor: '#808080', // 툴팁 색상
                     padding: 10, // 툴팁 패딩
                     callbacks: {
@@ -229,6 +234,7 @@ function successRateChart(canvas_id, climbing_data) {
                     position: 'left', // 범례 위치
                 },
             },
+            // Scales
             scales: { // x,y축 설정 관련
                 x: { // x축
                     title: {
@@ -255,7 +261,7 @@ function successRateChart(canvas_id, climbing_data) {
                     // max: 64, // y축 최댓값
                     border: { dash: [0,0] } // 점선
                 }
-            },
+            }
             // title: {
             //     display: true,
             //     text: "WEIGHTS GRAPH"
