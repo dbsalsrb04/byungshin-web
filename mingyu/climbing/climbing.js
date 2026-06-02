@@ -227,7 +227,7 @@ function successRateChart(canvas_id, climbing_data) {
                 legend: { // 범례
                     display: true, // 범례 보이기
                     position: 'left', // 범례 위치
-                }
+                },
             },
             scales: { // x,y축 설정 관련
                 x: { // x축
