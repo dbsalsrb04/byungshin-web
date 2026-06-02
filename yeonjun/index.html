@@ -405,41 +405,89 @@
                 font-weight: 800;
             }
 
-            .research-visual {
+            /* Research Academic Layout */
+            .research-academic {
                 display: flex;
-                gap: 20px;
-                align-items: flex-end;
-                height: 250px;
-                padding: 30px 40px;
+                flex-direction: column;
+                gap: 24px;
+                margin-top: 30px;
+            }
+
+            .academic-card {
+                padding: 24px;
                 background: var(--panel);
                 border: 1px solid var(--line);
                 border-radius: 8px;
-                margin-top: 20px;
+                box-shadow: 0 12px 30px rgba(25, 25, 25, 0.07);
             }
 
-            .bar-container {
-                flex: 1;
+            .status-card {
+                border-left: 4px solid var(--teal);
+            }
+
+            .status-badge-row {
+                display: flex;
+                gap: 10px;
+                margin-top: 16px;
+            }
+
+            .status-badge {
+                padding: 6px 12px;
+                background: rgba(15, 118, 110, 0.08);
+                color: var(--teal);
+                border-radius: 6px;
+                font-size: 0.8rem;
+                font-weight: 800;
+            }
+
+            .academic-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .academic-list {
                 display: flex;
                 flex-direction: column;
-                align-items: center;
-                gap: 8px;
-                height: 100%;
-                justify-content: flex-end;
+                gap: 16px;
             }
 
-            .bar {
-                width: 100%;
-                max-width: 40px;
-                background: var(--teal);
-                border-radius: 4px 4px 0 0;
-                transition: height 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-                height: 0;
+            .academic-item {
+                display: flex;
+                gap: 16px;
+                padding-bottom: 16px;
+                border-bottom: 1px solid var(--line);
             }
 
-            .bar-container span {
-                font-size: 0.75rem;
-                font-weight: 700;
+            .academic-item:last-child {
+                border-bottom: none;
+            }
+
+            .item-year {
+                font-family: "Cascadia Code", Consolas, monospace;
+                font-weight: 800;
+                color: var(--teal);
+                font-size: 0.9rem;
+                flex: 0 0 45px;
+            }
+
+            .item-content h4 {
+                margin: 0 0 4px;
+                font-size: 1rem;
+                letter-spacing: -0.01em;
+            }
+
+            .item-content p {
+                margin: 0;
+                font-size: 0.9rem;
                 color: var(--muted);
+                font-style: italic;
+            }
+
+            @media (max-width: 820px) {
+                .academic-grid {
+                    grid-template-columns: 1fr;
+                }
             }
 
             .hobby-grid {
@@ -713,13 +761,59 @@
                     <p class="section-kicker">Biomedical Deep Learning & Signal Processing.</p>
                 </div>
                 <p class="intro">My research focuses on applying <strong>Deep Learning</strong> architectures to physiological signals—specifically <strong>ECG, EKG, EEG, and iPPG</strong>—to extract meaningful health insights and improve diagnostic accuracy.</p>
-                <div class="research-visual">
-                    <div class="bar-container"><div class="bar" data-h="90%"></div><span>ECG/EKG</span></div>
-                    <div class="bar-container"><div class="bar" data-h="85%"></div><span>EEG</span></div>
-                    <div class="bar-container"><div class="bar" data-h="75%"></div><span>iPPG</span></div>
-                    <div class="bar-container"><div class="bar" data-h="95%"></div><span>AI/DL</span></div>
-                    <div class="bar-container"><div class="bar" data-h="70%"></div><span>Signal</span></div>
+                
+                <div class="research-academic">
+                    <!-- Research Status Card -->
+                    <div class="academic-card status-card">
+                        <p class="eyebrow">Current Status</p>
+                        <h3>Research Focus</h3>
+                        <p>Currently developing robust Deep Learning models for real-time physiological signal monitoring and anomaly detection.</p>
+                        <div class="status-badge-row">
+                            <span class="status-badge">Available for Collaboration</span>
+                            <span class="status-badge">Active Lab Member</span>
+                        </div>
+                    </div>
+
+                    <!-- Achievements Grid -->
+                    <div class="academic-grid">
+                        <div class="academic-list">
+                            <p class="eyebrow">Published Papers</p>
+                            <div class="academic-item">
+                                <span class="item-year">2026</span>
+                                <div class="item-content">
+                                    <h4>Deep Learning for iPPG Signal Reconstruction</h4>
+                                    <p>Published in *Journal of Biomedical Informatics*</p>
+                                </div>
+                            </div>
+                            <div class="academic-item">
+                                <span class="item-year">2025</span>
+                                <div class="item-content">
+                                    <h4>Real-time ECG Anomaly Detection using RNNs</h4>
+                                    <p>Presented at *International Conference on AI in Medicine*</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="academic-list">
+                            <p class="eyebrow">Awards & Recognition</p>
+                            <div class="academic-item">
+                                <span class="item-year">2026</span>
+                                <div class="item-content">
+                                    <h4>Best Poster Award</h4>
+                                    <p>Annual Biomedical Engineering Symposium</p>
+                                </div>
+                            </div>
+                            <div class="academic-item">
+                                <span class="item-year">2025</span>
+                                <div class="item-content">
+                                    <h4>Dean's List for Research Excellence</h4>
+                                    <p>Faculty of Engineering & Medicine</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
                 <div class="research-tags" style="display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap;">
                     <span class="tag" style="background: rgba(217, 81, 78, 0.1); color: var(--coral);">Biomedical AI</span>
                     <span class="tag" style="background: rgba(15, 118, 110, 0.1); color: var(--teal);">Physiological Signals</span>
@@ -787,13 +881,6 @@
                     section.classList.toggle('active', index === activeIndex);
                     section.classList.toggle('past', index < activeIndex);
                 });
-
-                if (activeSection.id === 'researcher') {
-                    const bars = activeSection.querySelectorAll('.bar');
-                    bars.forEach(bar => {
-                        bar.style.height = bar.getAttribute('data-h');
-                    });
-                }
             }
 
             const sectionObserver = new IntersectionObserver((entries) => {
