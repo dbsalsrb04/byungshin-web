@@ -210,7 +210,7 @@ function successRateChart(canvas_id, climbing_data) {
         options: {
             responsive: false, // 반응형(기본값 true) ?크기자동변경 등...
             maintainAspectRatio: false, // 크기 고정.
-            hover: { // 그래프에 커서 올려졌을 때 해당 난이도의 그래프가 반응.
+            hover: { // 그래프의 점에 커서 올려졌을 때 해당 난이도의 그래프가 반응.
                 mode: "dataset",
                 intersect: true
             },
@@ -219,7 +219,7 @@ function successRateChart(canvas_id, climbing_data) {
                 tooltip: { // 툴팁
                     enabled: true, // 툴팁 활성화 (기본값 true)
                     // intersect: true, // ?
-                    // mode: 'index', // 툴팁 팝업에서 그 x축에 대한 모든 y축 정보.
+                    mode: 'index', // 툴팁 팝업에서 그 x축에 대한 모든 y축 정보.
                     backgroundColor: '#808080', // 툴팁 색상
                     padding: 10, // 툴팁 패딩
                     callbacks: {
