@@ -10,7 +10,7 @@
     white-space: nowrap;
 }
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
     #button_bar {
         z-index: 1000;
         position: sticky;
@@ -23,7 +23,7 @@
         overflow: auto;
         white-space: nowrap;
     }
-} */
+}
 
 .display_button {
     text-align: center;

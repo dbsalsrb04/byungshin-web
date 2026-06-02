@@ -191,6 +191,8 @@ function successRateChart(canvas_id, climbing_data) {
             pointHoverRadius: 7,
             backgroundColor: COLORS[rate_color],
             borderColor: COLORS[rate_color],
+            // pointBackgroundColor: 'transparent', // 포인터 배경 없애기
+            // pointBorderWidth: 3 // 포인터 테두리 굵기
             // borderWidth: 2.5
         });
     }
