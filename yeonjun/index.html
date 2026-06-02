@@ -64,20 +64,25 @@
                 align-items: center;
                 justify-content: space-between;
                 gap: 16px;
-                margin-bottom: 24px;
-                position: sticky;
+                position: fixed;
                 top: 0;
-                z-index: 100;
-                background: rgba(251, 250, 247, 0.8);
-                backdrop-filter: blur(8px);
-                padding: 10px 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                padding: 24px min(5vw, 60px);
+                background: rgba(251, 250, 247, 0.6);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border-bottom: 1px solid rgba(229, 224, 216, 0.4);
             }
 
             .nav-links {
                 display: flex;
-                gap: 20px;
+                gap: 32px;
                 font-weight: 700;
-                font-size: 0.9rem;
+                font-size: 0.85rem;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
             }
 
             .nav-links a:hover {
@@ -140,76 +145,97 @@
             }
 
             .hero {
-                display: grid;
-                grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
-                gap: 28px;
-                align-items: stretch;
-                min-height: calc(100vh - 92px);
-                padding: 40px 0;
-            }
-
-            .hero-copy {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                padding: clamp(28px, 5vw, 58px);
-                border: 1px solid var(--line);
-                border-radius: 8px;
-                background: var(--panel);
-                box-shadow: var(--shadow);
+                min-height: 100vh;
+                padding: 140px 0 80px;
+                border-bottom: none;
+                gap: 0;
+            }
+
+            .hero-content {
+                display: grid;
+                grid-template-columns: 1.2fr 0.8fr;
+                gap: 60px;
+                align-items: center;
+            }
+
+            .hero-copy {
+                padding: 0;
+                border: none;
+                background: none;
+                box-shadow: none;
             }
 
             .eyebrow {
-                margin: 0 0 14px;
+                margin: 0 0 24px;
                 color: var(--teal);
-                font-size: 0.82rem;
+                font-size: 0.9rem;
                 font-weight: 900;
                 letter-spacing: 0.12em;
                 text-transform: uppercase;
+                display: flex;
+                align-items: center;
+                gap: 12px;
             }
 
-            h1,
-            h2,
-            h3,
-            p {
+            .eyebrow::after {
+                content: "";
+                width: 40px;
+                height: 1px;
+                background: var(--teal);
+            }
+
+            h1, h2, h3, p {
                 margin-top: 0;
                 text-align: left;
             }
 
             h1 {
-                max-width: 9ch;
-                margin-bottom: 18px;
-                font-size: clamp(3rem, 9vw, 6.8rem);
-                line-height: 0.92;
-                letter-spacing: 0;
+                max-width: none;
+                margin-bottom: 32px;
+                font-size: clamp(4rem, 12vw, 9.5rem);
+                font-weight: 900;
+                line-height: 0.82;
+                letter-spacing: -0.05em;
+                color: var(--ink);
             }
 
             .intro {
-                max-width: 58ch;
-                margin-bottom: 28px;
+                max-width: 45ch;
+                margin-bottom: 48px;
                 color: var(--muted);
-                font-size: 1.08rem;
+                font-size: clamp(1.1rem, 2vw, 1.45rem);
+                font-weight: 500;
+                line-height: 1.4;
             }
 
-            .hero-actions,
-            .social-row {
+            .hero-actions, .social-row {
                 display: flex;
                 flex-wrap: wrap;
-                gap: 10px;
+                gap: 16px;
             }
 
             .button {
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                min-height: 44px;
-                padding: 11px 16px;
+                min-height: 56px;
+                padding: 0 32px;
                 border: 1px solid var(--ink);
-                border-radius: 8px;
+                border-radius: 100px;
                 background: var(--ink);
                 color: #fff;
                 font-weight: 800;
                 text-align: center;
+                transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+            }
+
+            .button:hover {
+                transform: translateY(-2px);
+                background: #000;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             }
 
             .button.secondary {
@@ -218,17 +244,29 @@
                 color: var(--ink);
             }
 
+            .button.secondary:hover {
+                background: #fbfaf7;
+                border-color: var(--ink);
+            }
+
             .hero-media {
-                min-height: 360px;
+                position: relative;
+                height: 540px;
+                border-radius: 24px;
                 overflow: hidden;
-                border: 1px solid var(--line);
-                border-radius: 8px;
                 background: #fff;
-                box-shadow: var(--shadow);
+                box-shadow: 0 40px 100px rgba(25, 25, 25, 0.12);
+                transform: rotate(2deg);
+                transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            }
+
+            .hero:hover .hero-media {
+                transform: rotate(0deg) scale(1.02);
             }
 
             .hero-media img {
                 height: 100%;
+                width: 100%;
                 object-fit: cover;
             }
 
@@ -237,7 +275,7 @@
                 align-items: end;
                 justify-content: space-between;
                 gap: 18px;
-                margin: 0 0 24px;
+                margin: 0 0 48px;
             }
 
             h2 {
@@ -253,8 +291,11 @@
             }
 
             section {
-                min-height: calc(100vh - 78px);
-                padding: 72px 0;
+                min-height: 100vh;
+                padding: 100px 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
                 border-bottom: 1px solid var(--line);
                 scroll-snap-align: start;
                 scroll-snap-stop: always;
@@ -682,17 +723,19 @@
             </nav>
 
             <section class="hero scroll-section active" aria-labelledby="page-title">
-                <div class="hero-copy">
-                    <p class="eyebrow">Portfolio Hub / Student</p>
-                    <h1 id="page-title">Yeonjun Kim</h1>
-                    <p class="intro">Student, Developer, Researcher, and Hobbyist. Aspiring student who wants to travel the world and try everything. Loves challenges and Learning new things.</p>
-                    <div class="hero-actions">
-                        <a class="button" href="#developer">Explore Work</a>
-                        <a class="button secondary" href="https://www.notion.so/Yeonjun-s-Portfolio-9b1c8e5f0c7b4e5a9d8e6f1c2a3b4c5" target="_blank" rel="noopener">Notion CV</a>
+                <div class="hero-content">
+                    <div class="hero-copy">
+                        <p class="eyebrow">Portfolio Hub / Student</p>
+                        <h1 id="page-title">Yeonjun Kim</h1>
+                        <p class="intro">Student, Developer, Researcher, and Hobbyist. Aspiring student who wants to travel the world and try everything. Loves challenges and learning new things.</p>
+                        <div class="hero-actions">
+                            <a class="button" href="#developer">Explore Work</a>
+                            <a class="button secondary" href="https://www.notion.so/Yeonjun-s-Portfolio-9b1c8e5f0c7b4e5a9d8e6f1c2a3b4c5" target="_blank" rel="noopener">Notion CV</a>
+                        </div>
                     </div>
-                </div>
-                <div class="hero-media" aria-hidden="true">
-                    <img src="assets/portfolio-hero.png" alt="">
+                    <div class="hero-media" aria-hidden="true">
+                        <img src="assets/portfolio-hero.png" alt="">
+                    </div>
                 </div>
             </section>
 
@@ -760,17 +803,16 @@
                     <h2 id="researcher-title">Undergraduate Researcher</h2>
                     <p class="section-kicker">Biomedical Deep Learning & Signal Processing.</p>
                 </div>
-                <p class="intro">My research focuses on applying <strong>Deep Learning</strong> architectures to physiological signals—specifically <strong>ECG, EKG, EEG, and iPPG</strong>—to extract meaningful health insights and improve diagnostic accuracy.</p>
+                <p class="intro">My research focuses on applying <strong>Deep Learning</strong> architectures to physiological signals—specifically <strong>PPG, ECG, EKG, EEG, and iPPG</strong> to extract meaningful health insights and improve diagnostic accuracy.</p>
                 
                 <div class="research-academic">
                     <!-- Research Status Card -->
                     <div class="academic-card status-card">
                         <p class="eyebrow">Current Status</p>
                         <h3>Research Focus</h3>
-                        <p>Currently developing robust Deep Learning models for real-time physiological signal monitoring and anomaly detection.</p>
+                        <p>Developed Robust iPPG model on compressed video via KD. Working on MRI Report Generation VLM model based on Qwen3-vlm using LoRA.</p>
                         <div class="status-badge-row">
-                            <span class="status-badge">Available for Collaboration</span>
-                            <span class="status-badge">Active Lab Member</span>
+                            <span class="status-badge">Active Lab HILAB</span>
                         </div>
                     </div>
 
