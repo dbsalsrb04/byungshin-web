@@ -22,6 +22,11 @@
                 box-sizing: border-box;
             }
 
+            html {
+                scroll-behavior: smooth;
+                scroll-snap-type: y mandatory;
+            }
+
             body {
                 margin: 0;
                 min-height: 100vh;
@@ -51,7 +56,7 @@
             .page {
                 width: min(1120px, calc(100% - 32px));
                 margin: 0 auto;
-                padding: 28px 0 44px;
+                padding: 28px 0 0;
             }
 
             .top-nav {
@@ -60,6 +65,23 @@
                 justify-content: space-between;
                 gap: 16px;
                 margin-bottom: 24px;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+                background: rgba(251, 250, 247, 0.8);
+                backdrop-filter: blur(8px);
+                padding: 10px 0;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 20px;
+                font-weight: 700;
+                font-size: 0.9rem;
+            }
+
+            .nav-links a:hover {
+                color: var(--teal);
             }
 
             .brand {
@@ -98,8 +120,8 @@
                 grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
                 gap: 28px;
                 align-items: stretch;
-                min-height: 430px;
-                margin-bottom: 30px;
+                min-height: calc(100vh - 92px);
+                padding: 40px 0;
             }
 
             .hero-copy {
@@ -191,7 +213,7 @@
                 align-items: end;
                 justify-content: space-between;
                 gap: 18px;
-                margin: 0 0 14px;
+                margin: 0 0 24px;
             }
 
             h2 {
@@ -206,11 +228,22 @@
                 font-size: 0.98rem;
             }
 
+            section {
+                min-height: calc(100vh - 78px);
+                padding: 72px 0;
+                border-bottom: 1px solid var(--line);
+                scroll-snap-align: start;
+                scroll-snap-stop: always;
+            }
+
+            section:last-of-type {
+                border-bottom: none;
+            }
+
             .project-grid {
                 display: grid;
                 grid-template-columns: repeat(3, minmax(0, 1fr));
                 gap: 14px;
-                margin-bottom: 34px;
             }
 
             .project-card {
@@ -220,13 +253,13 @@
                 border-radius: 8px;
                 background: var(--panel);
                 box-shadow: 0 12px 30px rgba(25, 25, 25, 0.07);
-                transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+                transition: transform 300ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 300ms ease, border-color 300ms ease;
             }
 
             .project-card:hover {
-                transform: translateY(-3px);
-                border-color: rgba(15, 118, 110, 0.38);
-                box-shadow: 0 18px 44px rgba(25, 25, 25, 0.1);
+                transform: translateY(-8px) scale(1.02);
+                border-color: var(--teal);
+                box-shadow: 0 24px 48px rgba(15, 118, 110, 0.15);
             }
 
             .tag {
@@ -266,11 +299,154 @@
                 font-weight: 900;
             }
 
+            .developer-panel {
+                display: grid;
+                grid-template-columns: minmax(0, 1fr) minmax(280px, 0.75fr);
+                gap: 18px;
+                margin-top: 18px;
+            }
+
+            .terminal-card,
+            .skills-card {
+                border: 1px solid var(--line);
+                border-radius: 8px;
+                background: var(--panel);
+                box-shadow: 0 12px 30px rgba(25, 25, 25, 0.07);
+            }
+
+            .terminal-card {
+                overflow: hidden;
+                font-family: "Cascadia Code", Consolas, monospace;
+            }
+
+            .terminal-top {
+                display: flex;
+                gap: 7px;
+                padding: 12px 14px;
+                border-bottom: 1px solid var(--line);
+                background: #f4f2ee;
+            }
+
+            .dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: var(--teal);
+            }
+
+            .dot:nth-child(2) {
+                background: var(--coral);
+            }
+
+            .dot:nth-child(3) {
+                background: #c28a19;
+            }
+
+            .terminal-body {
+                display: grid;
+                gap: 10px;
+                padding: 18px;
+                color: #2b2b2b;
+                font-size: 0.95rem;
+            }
+
+            .terminal-body p {
+                margin: 0;
+                font-family: inherit;
+            }
+
+            .prompt {
+                color: var(--teal);
+                font-weight: 900;
+            }
+
+            .skills-card {
+                padding: 18px;
+            }
+
+            .skills-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-top: 14px;
+            }
+
+            .skills-list span {
+                padding: 8px 10px;
+                border: 1px solid var(--line);
+                border-radius: 8px;
+                background: #fbfaf7;
+                color: var(--muted);
+                font-size: 0.9rem;
+                font-weight: 800;
+            }
+
+            .research-visual {
+                display: flex;
+                gap: 20px;
+                align-items: flex-end;
+                height: 250px;
+                padding: 30px 40px;
+                background: var(--panel);
+                border: 1px solid var(--line);
+                border-radius: 8px;
+                margin-top: 20px;
+            }
+
+            .bar-container {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+                height: 100%;
+                justify-content: flex-end;
+            }
+
+            .bar {
+                width: 100%;
+                max-width: 40px;
+                background: var(--teal);
+                border-radius: 4px 4px 0 0;
+                transition: height 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+                height: 0;
+            }
+
+            .bar-container span {
+                font-size: 0.75rem;
+                font-weight: 700;
+                color: var(--muted);
+            }
+
+            .hobby-grid {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 20px;
+            }
+
+            .video-container {
+                position: relative;
+                padding-bottom: 56.25%;
+                height: 0;
+                overflow: hidden;
+                border-radius: 8px;
+                box-shadow: var(--shadow);
+            }
+
+            .video-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                border: 0;
+            }
+
             .link-list {
                 display: grid;
                 grid-template-columns: repeat(2, minmax(0, 1fr));
                 gap: 12px;
-                margin-bottom: 34px;
+                margin-top: 20px;
             }
 
             .link-tile {
@@ -303,7 +479,7 @@
                 align-items: center;
                 justify-content: space-between;
                 gap: 16px;
-                padding-top: 20px;
+                padding: 40px 0 20px;
                 border-top: 1px solid var(--line);
                 color: var(--muted);
             }
@@ -317,9 +493,47 @@
                 font-weight: 800;
             }
 
+            /* Scroll section transitions */
+            .scroll-section {
+                opacity: 0.2;
+                transform: translateY(28px) scale(0.985);
+                filter: blur(8px);
+                transition: opacity 700ms ease, transform 700ms ease, filter 700ms ease;
+            }
+
+            .scroll-section.active {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+
+            .scroll-section.past {
+                opacity: 0.08;
+                transform: translateY(-28px) scale(0.985);
+                filter: blur(10px);
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                html {
+                    scroll-behavior: auto;
+                    scroll-snap-type: none;
+                }
+
+                .scroll-section,
+                .scroll-section.past,
+                .scroll-section.active {
+                    opacity: 1;
+                    transform: none;
+                    filter: none;
+                    transition: none;
+                }
+            }
+
             @media (max-width: 820px) {
                 .hero,
                 .project-grid,
+                .developer-panel,
+                .hobby-grid,
                 .link-list {
                     grid-template-columns: 1fr;
                 }
@@ -348,6 +562,12 @@
                 .top-nav {
                     align-items: flex-start;
                     flex-direction: column;
+                    gap: 10px;
+                }
+
+                .nav-links {
+                    width: 100%;
+                    justify-content: space-between;
                 }
 
                 .back-link,
@@ -369,17 +589,22 @@
                     <span class="brand-mark">YK</span>
                     <span>Yeonjun Kim</span>
                 </a>
-                <a class="back-link" href="../index.html">Back to main page</a>
+                <div class="nav-links">
+                    <a href="#developer">Developer</a>
+                    <a href="#researcher">Researcher</a>
+                    <a href="#hobbyist">Hobbyist</a>
+                </div>
+                <a class="back-link" href="../index.html">Back to main</a>
             </nav>
 
-            <section class="hero" aria-labelledby="page-title">
+            <section class="hero scroll-section active" aria-labelledby="page-title">
                 <div class="hero-copy">
                     <p class="eyebrow">Portfolio Hub</p>
                     <h1 id="page-title">Yeonjun Kim</h1>
-                    <p class="intro">A home base for my projects, portfolio, code, videos, and the things I am building or exploring.</p>
+                    <p class="intro">Developer. Researcher. Creator. Building tools and exploring ideas at the intersection of tech and media.</p>
                     <div class="hero-actions">
-                        <a class="button" href="#projects">View projects</a>
-                        <a class="button secondary" href="https://www.notion.so/Yeonjun-s-Portfolio-9b1c8e5f0c7b4e5a9d8e6f1c2a3b4c5" target="_blank" rel="noopener">View portfolio</a>
+                        <a class="button" href="#developer">Explore Work</a>
+                        <a class="button secondary" href="https://www.notion.so/Yeonjun-s-Portfolio-9b1c8e5f0c7b4e5a9d8e6f1c2a3b4c5" target="_blank" rel="noopener">Notion CV</a>
                     </div>
                 </div>
                 <div class="hero-media" aria-hidden="true">
@@ -387,65 +612,115 @@
                 </div>
             </section>
 
-            <section id="projects" aria-labelledby="projects-title">
+            <section id="developer" class="scroll-section" aria-labelledby="developer-title">
                 <div class="section-head">
-                    <h2 id="projects-title">Projects</h2>
-                    <p class="section-kicker">Pinned work and pages worth checking out.</p>
+                    <h2 id="developer-title">Developer</h2>
+                    <p class="section-kicker">Building functional and scalable digital solutions.</p>
                 </div>
 
                 <div class="project-grid">
-                    <!-- Replace # with a real project URL. -->
-                    <a class="project-card" href="#">
-                        <span class="tag">Featured</span>
-                        <h3>Project One</h3>
-                        <p>A highlighted build, experiment, or case study can live here.</p>
-                        <span class="card-cta">Open project</span>
+                    <a class="project-card" href="../mingyu/climbing/climbing.html">
+                        <span class="tag">Collaborative</span>
+                        <h3>Climbing Tracker</h3>
+                        <p>A joint project focused on tracking and visualizing climbing progress.</p>
+                        <span class="card-cta">Launch App</span>
                     </a>
-
-                    <!-- Replace # with a real project URL. -->
                     <a class="project-card" href="#">
-                        <span class="tag">Build</span>
+                        <span class="tag">Systems</span>
                         <h3>Project Two</h3>
-                        <p>Add a short description of what it does and why it matters.</p>
-                        <span class="card-cta">View details</span>
+                        <p>Optimizing performance and architecture in complex environments.</p>
+                        <span class="card-cta">Read Case Study</span>
                     </a>
-
-                    <!-- Replace # with a real project URL. -->
                     <a class="project-card" href="#">
-                        <span class="tag">Archive</span>
+                        <span class="tag">Open Source</span>
                         <h3>Project Three</h3>
-                        <p>Use this for older work, a prototype, or something in progress.</p>
-                        <span class="card-cta">Explore</span>
+                        <p>Contributions to the community and shared tooling.</p>
+                        <span class="card-cta">GitHub Repo</span>
                     </a>
+                </div>
+
+                <div class="developer-panel">
+                    <div class="terminal-card" aria-label="Developer summary">
+                        <div class="terminal-top" aria-hidden="true">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <div class="terminal-body">
+                            <p><span class="prompt">yeonjun@portfolio</span> focus</p>
+                            <p>Building web tools, small apps, and practical experiments.</p>
+                            <p><span class="prompt">current_stack</span> HTML / CSS / JavaScript</p>
+                            <p><span class="prompt">direction</span> clearer interfaces, better workflows, faster iteration</p>
+                        </div>
+                    </div>
+
+                    <div class="skills-card">
+                        <p class="eyebrow">Developer Toolkit</p>
+                        <h3>What I Work With</h3>
+                        <p>Project structure, frontend polish, UI behavior, and lightweight web apps.</p>
+                        <div class="skills-list" aria-label="Developer skills">
+                            <span>Frontend</span>
+                            <span>JavaScript</span>
+                            <span>UI Design</span>
+                            <span>GitHub</span>
+                            <span>Prototypes</span>
+                            <span>Web Apps</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-            <section aria-labelledby="links-title">
+            <section id="researcher" class="scroll-section" aria-labelledby="researcher-title">
                 <div class="section-head">
-                    <h2 id="links-title">More Links</h2>
-                    <p class="section-kicker">Portfolio, channels, and profiles.</p>
+                    <h2 id="researcher-title">Researcher</h2>
+                    <p class="section-kicker">Investigating data patterns and human-computer interaction.</p>
+                </div>
+                <p class="intro">My research focuses on optimizing user experiences through data-driven insights and behavioral analysis.</p>
+                <div class="research-visual">
+                    <div class="bar-container"><div class="bar" data-h="80%"></div><span>UX</span></div>
+                    <div class="bar-container"><div class="bar" data-h="60%"></div><span>Data</span></div>
+                    <div class="bar-container"><div class="bar" data-h="95%"></div><span>HCI</span></div>
+                    <div class="bar-container"><div class="bar" data-h="45%"></div><span>Perf</span></div>
+                    <div class="bar-container"><div class="bar" data-h="70%"></div><span>Media</span></div>
+                </div>
+            </section>
+
+            <section id="hobbyist" class="scroll-section" aria-labelledby="hobbyist-title">
+                <div class="section-head">
+                    <h2 id="hobbyist-title">Hobbyist</h2>
+                    <p class="section-kicker">Video editing, Cinematography, and Gaming.</p>
+                </div>
+                
+                <h3 style="margin-bottom: 15px; font-size: 1.1rem;">Cinematography & Edits</h3>
+                <div class="hobby-grid">
+                    <div class="video-container">
+                        <!-- Replace with actual YouTube ID -->
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-container">
+                        <!-- Replace with actual YouTube ID -->
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <h3 style="margin: 40px 0 15px; font-size: 1.1rem;">Gaming Corner</h3>
+                <div class="game-area" id="game-container">
+                    <p class="section-kicker" style="margin-bottom: 10px;">Warm up your aim: Click the targets!</p>
+                    <div id="target-game" style="position: relative; height: 150px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; cursor: crosshair; overflow: hidden;">
+                        <div id="game-target" style="position: absolute; width: 30px; height: 30px; background: var(--coral); border-radius: 50%; display: none;"></div>
+                        <p id="score-display" style="position: absolute; top: 10px; right: 10px; font-weight: 900; color: var(--teal);">Score: 0</p>
+                    </div>
                 </div>
 
                 <div class="link-list">
                     <a class="link-tile" href="https://github.com/calavera16" target="_blank" rel="noopener">
                         <strong>GitHub</strong>
-                        <span>Code and projects</span>
+                        <span>My code history</span>
                         <b class="arrow">-></b>
                     </a>
                     <a class="link-tile" href="https://www.youtube.com/@calavera6712" target="_blank" rel="noopener">
                         <strong>YouTube</strong>
-                        <span>Videos and uploads</span>
-                        <b class="arrow">-></b>
-                    </a>
-                    <a class="link-tile" href="https://www.notion.so/Yeonjun-s-Portfolio-9b1c8e5f0c7b4e5a9d8e6f1c2a3b4c5" target="_blank" rel="noopener">
-                        <strong>Portfolio</strong>
-                        <span>Selected work</span>
-                        <b class="arrow">-></b>
-                    </a>
-                    <!-- Replace # with a blog, resume, project archive, or contact URL. -->
-                    <a class="link-tile" href="#">
-                        <strong>Extra Page</strong>
-                        <span>Blog, resume, or contact</span>
+                        <span>Edits & Cinematography</span>
                         <b class="arrow">-></b>
                     </a>
                 </div>
@@ -459,5 +734,95 @@
                 </div>
             </footer>
         </main>
+
+        <script>
+            const sections = Array.from(document.querySelectorAll('.scroll-section'));
+
+            function setActiveSection(activeSection) {
+                const activeIndex = sections.indexOf(activeSection);
+
+                sections.forEach((section, index) => {
+                    section.classList.toggle('active', index === activeIndex);
+                    section.classList.toggle('past', index < activeIndex);
+                });
+
+                if (activeSection.id === 'researcher') {
+                    const bars = activeSection.querySelectorAll('.bar');
+                    bars.forEach(bar => {
+                        bar.style.height = bar.getAttribute('data-h');
+                    });
+                }
+            }
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                const visible = entries
+                    .filter(entry => entry.isIntersecting)
+                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+                if (visible) {
+                    setActiveSection(visible.target);
+                }
+            }, {
+                threshold: [0.45, 0.6, 0.75]
+            });
+
+            sections.forEach(section => sectionObserver.observe(section));
+
+            // Easter Egg: Click Brand Mark 5 times
+            let clickCount = 0;
+            const brandMark = document.querySelector('.brand-mark');
+            brandMark.addEventListener('click', (e) => {
+                e.preventDefault();
+                clickCount++;
+                brandMark.style.transform = `scale(${1 + clickCount * 0.1}) rotate(${clickCount * 10}deg)`;
+                
+                if (clickCount === 5) {
+                    alert('Achievement Unlocked: Portfolio Explorer! Enjoy the hidden gaming mode.');
+                    brandMark.style.background = 'var(--teal)';
+                    brandMark.style.color = '#fff';
+                    document.body.style.filter = 'hue-rotate(45deg)';
+                }
+            });
+
+            // Target Practice Mini-game
+            const gameContainer = document.getElementById('target-game');
+            const target = document.getElementById('game-target');
+            const scoreDisplay = document.getElementById('score-display');
+            let score = 0;
+
+            function moveTarget() {
+                const maxX = gameContainer.clientWidth - target.clientWidth;
+                const maxY = gameContainer.clientHeight - target.clientHeight;
+                const newX = Math.floor(Math.random() * maxX);
+                const newY = Math.floor(Math.random() * maxY);
+                target.style.left = `${newX}px`;
+                target.style.top = `${newY}px`;
+                target.style.display = 'block';
+            }
+
+            target.addEventListener('click', () => {
+                score++;
+                scoreDisplay.textContent = `Score: ${score}`;
+                moveTarget();
+                
+                // Visual feedback
+                const flash = document.createElement('div');
+                flash.style.position = 'absolute';
+                flash.style.width = '100%';
+                flash.style.height = '100%';
+                flash.style.background = 'rgba(15, 118, 110, 0.1)';
+                flash.style.pointerEvents = 'none';
+                gameContainer.appendChild(flash);
+                setTimeout(() => flash.remove(), 100);
+            });
+
+            // Start game when hobbyist section is visible
+            const hobbyistObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && score === 0) {
+                    moveTarget();
+                }
+            }, { threshold: 0.5 });
+            hobbyistObserver.observe(document.getElementById('hobbyist'));
+        </script>
     </body>
 </html>
