@@ -9,7 +9,7 @@
     width: 800px;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
     #success_chart_container {
         margin: auto;
         width: 355px;
@@ -20,4 +20,4 @@
         width: 350px;
         margin: auto;
     }
-}
+} */

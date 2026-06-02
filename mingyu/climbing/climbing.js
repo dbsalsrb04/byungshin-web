@@ -18,7 +18,7 @@ async function load_climbing_data() {
 
     // data 가져오기
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     // tbody 가져오기
     const tbody = document.querySelector("#record_table tbody");
@@ -167,6 +167,7 @@ function successRateChart(canvas_id, climbing_data) {
     const chart_dataset = [];
     
     for (const record of climbing_data) {
+        // 더클라임 외 지점은 제외함
         if (record.spot.includes("더클라임")) {
             dates.push(`${record.spot}\n${record.date}`);
             // 완등률 구하기
@@ -194,9 +195,9 @@ function successRateChart(canvas_id, climbing_data) {
         });
     }
     
-    console.log(chart_dataset);
-    console.log(dates);
-    console.log(success_rates);
+    // console.log(chart_dataset);
+    // console.log(dates);
+    // console.log(success_rates);
 
 
     const ctx = document.getElementById(canvas_id).getContext('2d');
@@ -212,8 +213,16 @@ function successRateChart(canvas_id, climbing_data) {
             plugins: {
                 tooltip: { // 툴팁
                     enabled: true, // 툴팁 활성화 (기본값 true)
+                    // intersect: true, // ?
+                    // mode: 'index',
                     backgroundColor: '#808080', // 툴팁 색상
-                    padding: 10 // 툴팁 패딩
+                    padding: 10, // 툴팁 패딩
+                    callbacks: {
+                        // 레이블 텍스트 변경
+                        label: function(ctx) {
+                            return ctx.dataset.label + ": " + ctx.raw + "%";
+                        }
+                    }
                 },
                 legend: { // 범례
                     display: true, // 범례 보이기
@@ -222,9 +231,26 @@ function successRateChart(canvas_id, climbing_data) {
             },
             scales: { // x,y축 설정 관련
                 x: { // x축
+                    title: {
+                        display: true,
+                        text: "< 지점, 날짜 >",
+                        font: {
+                            size: 14,
+                            weight: "bold"
+                        }
+                    },
+                    // ticks: { display: false }, // x축 라벨 숨김
                     grid: { display: false } // x축 격자선(=세로선) 숨김
                 },
                 y: {
+                    title: { 
+                        display: true,
+                        text: "완등률(%)",
+                        font: {
+                            size: 16,
+                            weight: "bold"
+                        }
+                    },
                     // min: 61, // y축 최솟값
                     // max: 64, // y축 최댓값
                     border: { dash: [0,0] } // 점선
