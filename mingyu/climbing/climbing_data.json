@@ -1302,7 +1302,7 @@
             "brown"  : "",
             "gray"   : "",
             "purple" : "",
-            "pink"   : "",
+            "pink"   : 0,
             "red"    : 10,
             "blue"   : 14,
             "green"  : "",
