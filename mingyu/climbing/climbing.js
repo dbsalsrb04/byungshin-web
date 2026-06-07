@@ -30,6 +30,7 @@ async function load_climbing_data() {
 
         // tr 생성
         const tr = document.createElement("tr");
+        tr.className = "date_record";
         if (record.spot.includes("더클라임") == false) {
             tr.className = "not_theclimb"
         }

@@ -2,25 +2,30 @@
     text-align: center;
 }
 
+/* 문서 */
 html {
     background-color: #F8F8FA;
 }
 
+/* 테이블 전체 */
 table {
     margin: auto;
     border-collapse: collapse;
 }
 
+/* 헤더 셀 */
 th {
     height: 23px;
     min-height: 23px;
 }
 
+/* 각 셀 */
 td {
     min-width: 34px;
     border-bottom: 1px solid #DDDDDD;
 }
 
+/* 테이블 헤더 부분 */
 thead {
     z-index: 999;
     background-color: #CCCCCC;
@@ -28,6 +33,7 @@ thead {
     top: 23px;
 }
 
+/* 날짜 열 */
 .date {
     font-size: 9pt;
     font-weight: bold;
@@ -35,6 +41,7 @@ thead {
     min-width: 70px;
 }
 
+/* 지점 열 */
 .spot {
     font-size: 10pt;
     font-weight: bold;
@@ -42,10 +49,7 @@ thead {
     min-width: 100px;
 }
 
-.not_theclimb {
-    background-color: #dddddd;
-}
-
+/* 성공 열 */
 .success {
     background-color: #EEEEEE;
     font-weight: bold;
@@ -53,10 +57,33 @@ thead {
     border-left: 2px solid #000000;
 }
 
+/* 더클라임 아닌 행 배경색 */
+.not_theclimb {
+    background-color: #dddddd;
+}
+
+/* 더클라임 아닌 행 배경색 */
 .not_theclimb .success {
     background-color: #dddddd;
 }
 
+/* 더클라임 아닌 곳은 글씨크기 작게 */
 .not_theclimb .spot {
     font-size: 6pt;
+}
+
+/* 한 행 */
+.date_record {
+    transition: transform 0.2s ease;
+}
+
+/* 한 행에 마우스 올렸을 때 */
+.date_record:hover td {
+    background-color: #66DDDD !important;
+}
+
+/* 한 행에 마우스 올렸을 때 */
+.date_record:hover {
+    transform: scale(1.04); /* 행이 커짐 */
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.75); /* 그림자 */
 }
