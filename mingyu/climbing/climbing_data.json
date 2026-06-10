@@ -1598,5 +1598,37 @@
             "yellow" : "",
             "white"  : ""
         }
+    },
+    {
+        "spot": "더클라임 성수",
+        "date": "2026-06-11",
+
+        "tries": {
+            "black"  : "",
+            "brown"  : "",
+            "gray"   : "",
+            "purple" : "",
+            "pink"   : 5,
+            "red"    : 24,
+            "blue"   : 23,
+            "green"  : "",
+            "orange" : "",
+            "yellow" : "",
+            "white"  : ""
+        },
+
+        "successes": {
+            "black"  : "",
+            "brown"  : "",
+            "gray"   : "",
+            "purple" : "",
+            "pink"   : 3,
+            "red"    : 20,
+            "blue"   : 23,
+            "green"  : "",
+            "orange" : "",
+            "yellow" : "",
+            "white"  : ""
+        }
     }
 ]
