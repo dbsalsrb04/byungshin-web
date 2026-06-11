@@ -3,22 +3,22 @@ let flat_records = [];
 
 // 차트 그리기
 function chartCtx(canvas_id, x_data, y_data) {
-    const ctx = document.getElementById("my_chart").getContext('2d');
+    const ctx = document.getElementById(canvas_id).getContext('2d');
     const my_chart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ["1번","2번","3번","4번"], // x축 데이터
+            labels: x_data, // x축 데이터
             datasets: [{ // 데이터 속성
                 label: '1번째 라벨', // 데이터 제목
-                data: [7,12,9,4], // 데이터
+                data: y_data, // 데이터
                 // backgroundColor: [ "#FFFFFF" ],
                 // borderColor: [ "#FFFFFF" ],
                 // borderWidth: 1
                 }
-                ,{
-                    label: "2번째 라벨",
-                    data: [3,4,5,8]
-                }
+                // {
+                //     label: "2번째 라벨",
+                //     data: [3,4,5,8]
+                // }
             ]
         },
         options: {
@@ -51,6 +51,17 @@ function chartCtx(canvas_id, x_data, y_data) {
             }
         }
     });
+}
+
+
+// 2026.06.11. 22:56
+// 여기부터 수정하십쇼..
+// 차트 밑에 버튼 누르면 차트 수정되는 거 만들고 있었음.
+function getMyChart(canvas_id) {
+    const canvas_element = document.getElementById(canvas_id);
+    const gotChart = Chart.getChart(canvas_element);
+    console.log(gotChart);
+    console.log(gotChart.data);
 }
 
 async function load_data() {
@@ -185,5 +196,5 @@ function show_only_theclimb_yangjae(color) {
 async function init(){
     const data = await load_data();
     flat_records = flatten_records(data);
-    chartCtx();
+    chartCtx("my_chart", ["1번","2번","3번","4번"], [12, 8, 13, 6]);
 }
