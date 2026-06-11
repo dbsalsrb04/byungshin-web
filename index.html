@@ -7,16 +7,11 @@
         <title>BYUNGSHIN WEB</title>
         <link href="./mingyu/pictures/smile-mingyu.jpg" rel="shortcut icon" type="image/x-icon">
 
-        <script>
-            function resolution() {
-                console.log(`${screen.width} * ${screen.height}`)
-                document.getElementById("resolution").innerText = `해상도: ${screen.width} * ${screen.height}`;
-            }
-        </script>
+        <script src="index.js" defer></script>
         <link rel="stylesheet" href="./style.css">
     </head>
 
-    <body onload="resolution()">
+    <body onload="init()">
         <b id="resolution"></b>
         
         <h1>BYUNGSHIN WEB</h1>
@@ -24,6 +19,8 @@
         <!-- 윤민규 -->
         <div id="mingyu">
             <!-- Link grid -->
+            <!-- div 안에 카드 넣을 그리드
+                 div > a > [descriptions] -->
             <div class="card-grid" id="card-grid-main-mingyu">
                 <a class="card" target="_blank" href="https://github.com/dbsalsrb04/mingyu-web">
                     <h3>BYUNGSHIN-WEB<br>깃허브</h3>
