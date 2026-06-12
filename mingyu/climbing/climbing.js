@@ -362,6 +362,41 @@ function successRateChart(canvas_id, climbing_data) {
     });
 }
 
+//////////////////////////////////////////////////////////////////////
+/////////////////////////////// 2026.06.12. 21:11 ///////////////////////////////
+
+// 차트 구하고 차트 return
+function getMyChart(canvas_id) {
+    const canvas_element = document.getElementById(canvas_id);
+    const chart = Chart.getChart(canvas_element);
+    return chart;
+}
+// 차트 수정 
+// 1. canvas의 id를 받아 chart를 구함.
+// 2. 원본 데이터를 불러와서 이 함수 내에서 가공할 지,
+//    아니면 목적에 맞게 가공하는 함수를 따로따로 만들어서 이 함수에 넘겨줄 지..
+function editChart(canvas_id, climbing_data) {
+    const chart = getMyChart(canvas_id);
+    
+}
+
+/* === sample ===
+function getMyChart(canvas_id) {
+    const canvas_element = document.getElementById(canvas_id);
+    const gotChart = Chart.getChart(canvas_element);
+    console.log(gotChart);
+    console.log(gotChart.data);
+    console.log(gotChart.data.datasets[0].data);
+    console.log(gotChart.data.labels);
+    
+    gotChart.data.datasets[0].data = [Math.random()*15, Math.random()*15, Math.random()*15, Math.random()*15];
+    gotChart.update();
+    }
+*/
+
+//////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
 // climbing.html 의
 // <body onload="init()">
 // 에서 처음 실행되는 함수가 하나가 아니기 때문에

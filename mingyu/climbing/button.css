@@ -1,4 +1,11 @@
-#button_bar {
+#edit-chart-button-grid {
+    display: grid;
+    grid-template-columns: 30px 30px;
+    gap: 10px;
+}
+
+/* 색상 표시 버튼 바 */
+#color-display-button-bar {
     z-index: 1000;
     position: sticky;
     top: 0px;

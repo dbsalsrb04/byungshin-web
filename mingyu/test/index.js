@@ -62,6 +62,11 @@ function getMyChart(canvas_id) {
     const gotChart = Chart.getChart(canvas_element);
     console.log(gotChart);
     console.log(gotChart.data);
+    console.log(gotChart.data.datasets[0].data);
+    console.log(gotChart.data.labels);
+
+    gotChart.data.datasets[0].data = [Math.random()*15, Math.random()*15, Math.random()*15, Math.random()*15];
+    gotChart.update();
 }
 
 async function load_data() {
