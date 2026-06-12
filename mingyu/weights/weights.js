@@ -3,7 +3,7 @@ let weights = [];
 
 // 차트 그리기
 // can
-function chartCtx(canvas_id, x_data, y_data) {
+function chartCtx(canvas_id) {
     const ctx = document.getElementById(canvas_id).getContext('2d');
     const my_chart = new Chart(ctx, {
         type: 'line',
@@ -58,7 +58,7 @@ async function load_data() {
     const response = await fetch("weight_data.json");
 
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     // for (const record of data) {
     //     console.log(record.date + ' | ' + record.spot + ' | ' + Number(record.successes.red) + ` / ` + Number(record.tries.red));
@@ -87,5 +87,5 @@ async function init() {
         weights.push(record.weight);
     }
 
-    chartCtx("weight_chart", dates, weights);
+    chartCtx("weight_chart");
 }

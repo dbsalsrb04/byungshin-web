@@ -13,7 +13,7 @@ const COLORS = {
 }
 
 // climbing_data.json에서 가져온 데이터 저장할 전역변수. 그냥 이게 편할 듯.
-let climbing_data = []; // 원본 데이터. 전역 변수로 선언되었으니 그냥 data로 쓰면 됨.
+let climbing_data; // 원본 데이터. 전역 변수로 선언되었으니 그냥 climbing_data로 쓰면 됨.
 
 async function load_climbing_data() {
     document.getElementById("record_tbody").innerHTML = ``;
@@ -148,6 +148,7 @@ function apply_saved_columns() {
     });
 }
 
+
 // 차트 그리기
 // x축은 방문한 모든 날짜.
 /* === 설명 ===
@@ -276,7 +277,7 @@ function successRateChart(canvas_id) {
                 x: { // x축
                     title: {
                         display: true,
-                        text: "< 지점, 날짜 >",
+                        text: "< 날짜 >",
                         font: {
                             size: 14,
                             weight: "bold"
@@ -285,7 +286,7 @@ function successRateChart(canvas_id) {
                     // ticks: { display: false }, // x축 라벨 숨김
                     grid: { display: false } // x축 격자선(=세로선) 숨김
                 },
-                y: {
+                y: { // y축
                     title: { 
                         display: true,
                         text: "완등률(%)",
@@ -311,7 +312,7 @@ function successRateChart(canvas_id) {
 
 // 원본 데이터를 받아 클라이밍한 날짜만 return
 function chartDates(climbing_data) {
-    let dates = [];
+    const dates = [];
     
     for (const record of climbing_data) {
         if (record.spot.includes("더클라임")) {
@@ -324,7 +325,7 @@ function chartDates(climbing_data) {
 
 // 원본 데이터를 받아 더클라임 지점만 return
 function chartSpots(climbing_data) {
-    let spots = [];
+    const spots = [];
     for (const record of climbing_data) {
         if (record.spot.includes("더클라임")) {
             spots.push(record.spot);
@@ -335,7 +336,7 @@ function chartSpots(climbing_data) {
 
 // 원본 데이터를 받아 각 난이도별 완등률 return
 function successRates(climbing_data) {
-    let success_rates = {
+    const success_rates = {
          black: [],
          brown: [],
           gray: [],
@@ -366,7 +367,7 @@ function successRates(climbing_data) {
     counts = problemCount(climbing_data).successes_counts
     이렇게 호출하면 됨. */
 function problemCounts(climbing_data) {
-    let tries_counts = {
+    const tries_counts = {
         black: [],
         brown: [],
          gray: [],
@@ -379,7 +380,7 @@ function problemCounts(climbing_data) {
        yellow: [],
         white: []
     };
-    let successes_counts = {
+    const successes_counts = {
         black: [],
         brown: [],
          gray: [],
@@ -412,8 +413,7 @@ function getMyChart(canvas_id) {
 }
 
 
-/* ===== 차트 수정 ===== */
-
+/* ======= 차트 수정 ======= */
 /* === sample ===
 function getMyChart(canvas_id) {
     const canvas_element = document.getElementById(canvas_id);
@@ -478,7 +478,7 @@ function editChartToSuccessRate(canvas_id) {
     chart.update();
 }
 
-// 특정 지점에 대한 전체 기간 완등률 차트로 수정하는 함수
+// 특정 지점에 대한 전체 기간 완등률 차트로 수정하는 함수 (사실 editChartToSuccessRate랑 거의 동일, filtered_data만 다름.)
 function editChartToSuccessRateBySpot(canvas_id, spot) {
     const chart = getMyChart(canvas_id);
     
@@ -526,7 +526,6 @@ function editChartToSuccessRateBySpot(canvas_id, spot) {
     chart.data.labels = dates;
     chart.update();
 }
-
 
 
 // climbing.html에서 body onload="init()" => 페이지 로드되면 init 함수 실행됨.
