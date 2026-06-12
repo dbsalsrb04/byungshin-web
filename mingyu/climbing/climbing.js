@@ -12,12 +12,15 @@ const COLORS = {
     white: "#FFFFFF"
 }
 
+// climbing_data.json에서 가져온 데이터 저장할 전역변수. 그냥 이게 편할 듯.
+let climbing_data = []; // 원본 데이터. 전역 변수로 선언되었으니 그냥 data로 쓰면 됨.
+
 async function load_climbing_data() {
     document.getElementById("record_tbody").innerHTML = ``;
     const response = await fetch("climbing_data.json");
 
     // data 가져오기
-    const data = await response.json();
+    climbing_data = await response.json();
     // console.log(data);
 
     // tbody 가져오기
@@ -26,7 +29,7 @@ async function load_climbing_data() {
     // 데이터 개수만큼 반복
     // data: 0,1,2,3, ... => 0: {spot: 더클라임, date, ...}
     // record: {spot: '더클라임 양재', date: '2004-11-24', tries: {...}, successes: {...}}
-    for (const record of data) {
+    for (const record of climbing_data) {
 
         // tr 생성
         const tr = document.createElement("tr");
@@ -77,7 +80,7 @@ async function load_climbing_data() {
         tbody.appendChild(tr);
     }
 
-    return data;
+    return climbing_data;
 }
 
 
@@ -163,84 +166,31 @@ function apply_saved_columns() {
    이로써 툴팁에서 실제 시도문제 수와 완등문제 수를 볼 수 있게 됨.
 
 + spots도 동일한 방법으로..
-*/
-function successRateChart(canvas_id, climbing_data) {
-    let dates = [];
-    let spots = [];
 
-    let success_rates = {
-         black: [],
-         brown: [],
-          gray: [],
-        purple: [],
-          pink: [],
-           red: [],
-          blue: [],
-         green: [],
-        orange: [],
-        yellow: [],
-         white: []
-    };
-    let tries_counts = {
-        black: [],
-        brown: [],
-         gray: [],
-       purple: [],
-         pink: [],
-          red: [],
-         blue: [],
-        green: [],
-       orange: [],
-       yellow: [],
-        white: []
-    };
-    let successes_counts = {
-        black: [],
-        brown: [],
-         gray: [],
-       purple: [],
-         pink: [],
-          red: [],
-         blue: [],
-        green: [],
-       orange: [],
-       yellow: [],
-        white: []
-    };
+!!! 중요 !!!
+모든 가공될 데이터는 "더클라임" 지역에 대해서만 넣어야 날짜와 맞게 들어감.
+*/
+// 최초 차트 그릴 때 호출되는 함수.
+function successRateChart(canvas_id) {
+    const dates = chartDates(climbing_data);
+    const spots = chartSpots(climbing_data);
+
+    const success_rates = successRates(climbing_data);
+    
+    const counts = problemCounts(climbing_data); // { tries_counts: {...}, successes_counts: {...} }
 
     const chart_dataset = [];
-    
-    // success_rates|tries_counts|successes_counts에 데이터 넣기
-    for (const record of climbing_data) {
-        // 더클라임 외 지점은 제외함
-        if (record.spot.includes("더클라임")) {
-            dates.push(record.date); // 날짜
-            spots.push(record.spot); // 지점
-            // 완등률 구하기
-            // color: success_rates의 각 색깔 리스트
-            // climbing_data의 tries와 successes 의 key 이름이 똑같음.
-            // record.successes[color] => data에서 현재 가리키고 있는 방문일의 특정 난이도(=색깔)의 완등 개수
-            for (const color in success_rates) {
-                let rate = Number((record.successes[color] / record.tries[color] * 100).toFixed(1));
-                success_rates[color].push(rate);
-
-                // 이 2개 => 성공|완등 문제 수 미리 넣기
-                tries_counts[color].push(record.tries[color]);
-                successes_counts[color].push(record.successes[color]);
-            }
-        }
-    }
 
     // chart의 data 속성 중 datasets 속성에 넣을 값 미리 넣기
-    for (const color in success_rates) {
+    for (const color in COLORS) {
         chart_dataset.push({ // 데이터 속성
             label: color, // 데이터 제목
             data: success_rates[color], // 데이터
 
             // dataset 안에 지점/완등/성공 문제 수도 같이 넣어놓기
             spots: spots,
-            tries: tries_counts[color],
-            successes: successes_counts[color],
+            tries: counts.tries_counts[color],
+            successes: counts.successes_counts[color],
 
             pointRadius: 3.5,
             pointHoverRadius: 7,
@@ -251,11 +201,6 @@ function successRateChart(canvas_id, climbing_data) {
             // borderWidth: 2.5
         });
     }
-    
-    // console.log(chart_dataset);
-    // console.log(dates);
-    // console.log(success_rates);
-
 
     const ctx = document.getElementById(canvas_id).getContext('2d');
     const my_chart = new Chart(ctx, {
@@ -349,7 +294,9 @@ function successRateChart(canvas_id, climbing_data) {
                             weight: "bold"
                         }
                     },
-                    // min: 61, // y축 최솟값
+                    // min: 0, // y축 최솟값
+                    beginAtZero: true, // y축이 0부터 시작하도록 설정
+                    // grace: 5, // y축 최댓값이 데이터의 최댓값보다 약간 더 크게 보이도록 여유 공간 주기
                     // max: 100, // y축 최댓값
                     // border: { dash: [0,0] } // 점선
                 }
@@ -362,23 +309,110 @@ function successRateChart(canvas_id, climbing_data) {
     });
 }
 
-//////////////////////////////////////////////////////////////////////
-/////////////////////////////// 2026.06.12. 21:11 ///////////////////////////////
+// 원본 데이터를 받아 클라이밍한 날짜만 return
+function chartDates(climbing_data) {
+    let dates = [];
+    
+    for (const record of climbing_data) {
+        if (record.spot.includes("더클라임")) {
+            dates.push(record.date);
+        }
+    }
 
-// 차트 구하고 차트 return
+    return dates;
+}
+
+// 원본 데이터를 받아 더클라임 지점만 return
+function chartSpots(climbing_data) {
+    let spots = [];
+    for (const record of climbing_data) {
+        if (record.spot.includes("더클라임")) {
+            spots.push(record.spot);
+        }
+    }
+    return spots;
+}
+
+// 원본 데이터를 받아 각 난이도별 완등률 return
+function successRates(climbing_data) {
+    let success_rates = {
+         black: [],
+         brown: [],
+          gray: [],
+        purple: [],
+          pink: [],
+           red: [],
+          blue: [],
+         green: [],
+        orange: [],
+        yellow: [],
+         white: []
+    };
+    for (const record of climbing_data) {
+        if (record.spot.includes("더클라임")) {
+            for (const color in success_rates) {
+                let rate = Number((record.successes[color] / record.tries[color] * 100).toFixed(1));
+                success_rates[color].push(rate);
+            }
+        }
+    }
+
+    return success_rates;
+}
+
+// 원본 데이터를 받아 각 난이도별 시도/성공 문제 수 return
+/* !!! 호출할 때 !!!
+    counts = problemCount(climbing_data).tries_counts
+    counts = problemCount(climbing_data).successes_counts
+    이렇게 호출하면 됨. */
+function problemCounts(climbing_data) {
+    let tries_counts = {
+        black: [],
+        brown: [],
+         gray: [],
+       purple: [],
+         pink: [],
+          red: [],
+         blue: [],
+        green: [],
+       orange: [],
+       yellow: [],
+        white: []
+    };
+    let successes_counts = {
+        black: [],
+        brown: [],
+         gray: [],
+       purple: [],
+         pink: [],
+          red: [],
+         blue: [],
+        green: [],
+       orange: [],
+       yellow: [],
+        white: []
+    };
+
+    for (const record of climbing_data) {
+        if (record.spot.includes("더클라임")) {
+            for (const color in tries_counts) {
+                tries_counts[color].push(record.tries[color]);
+                successes_counts[color].push(record.successes[color]);
+            }
+        }
+    }
+    return { tries_counts, successes_counts };
+}
+
+// 현재 canvas의 차트 return
 function getMyChart(canvas_id) {
     const canvas_element = document.getElementById(canvas_id);
     const chart = Chart.getChart(canvas_element);
     return chart;
 }
-// 차트 수정 
-// 1. canvas의 id를 받아 chart를 구함.
-// 2. 원본 데이터를 불러와서 이 함수 내에서 가공할 지,
-//    아니면 목적에 맞게 가공하는 함수를 따로따로 만들어서 이 함수에 넘겨줄 지..
-function editChart(canvas_id, climbing_data) {
-    const chart = getMyChart(canvas_id);
-    
-}
+
+
+/* ===== 차트 수정 ===== */
 
 /* === sample ===
 function getMyChart(canvas_id) {
@@ -394,15 +428,110 @@ function getMyChart(canvas_id) {
     }
 */
 
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
+// 1. canvas의 id를 받아 chart를 구함.
+// 2. 원본 데이터를 불러와서 이 함수 내에서 가공할 지,
+//    아니면 목적에 맞게 가공하는 함수를 따로따로 만들어서 이 함수에 넘겨줄 지..
+//    그럴 필요 없는 게, 어차피 받아온 chart에 지금 chart의 정보가 들어있으니 괜찮을 듯.
+// 3. ...
+// 4. 그냥 이 함수는 labels, datasets만 파라미터로 받아서 수정하고, 가공은 다른 함수에서 해오는 걸로
+// 4.1. 근데 문제가 있다. chart의 labels, datasets는 다 준비됐는데, chart의 options를 어떻게 해야 할까..
+// 4.2. 그냥 editChartTo 이런 식으로 원하는 통계의 형태에 따라 함수를 만드는 게 좋을 듯. ex) editChartToSuccessRate 등등...
+// 4.3. 추가로, chart_dataset은 함수로 만들지 말고, 그냥 edit 함수 내에서 처리하는 게 나을 듯. 파라미터가 너무 많아지게 되기 때문에
+// ㄴ 고민의 흔적... 대견하다.
 
-// climbing.html 의
-// <body onload="init()">
-// 에서 처음 실행되는 함수가 하나가 아니기 때문에
-// init() 함수로 통합
+// !!! 앞으로 다른 통계로 수정하는 함수 만들 때도 이 함수를 템플릿 삼아 만들면 됨
+// ex) editChartToMINGYU(canvas_id) {...} !!!
+// 전체 기간 동안의 완등률 차트로 수정하는 함수
+function editChartToSuccessRate(canvas_id) {
+    const chart = getMyChart(canvas_id);
+
+    const dates = chartDates(climbing_data);
+    const spots = chartSpots(climbing_data);
+
+    const success_rates = successRates(climbing_data);
+    
+    const counts = problemCounts(climbing_data); // { tries_counts: {...}, successes_counts: {...} }
+
+    const chart_dataset = [];
+
+    for (const color in COLORS) {
+        chart_dataset.push({
+            label: color, // 데이터 제목
+            data: success_rates[color], // 데이터
+
+            // dataset 안에 지점/완등/성공 문제 수도 같이 넣어놓기
+            spots: spots,
+            tries: counts.tries_counts[color],
+            successes: counts.successes_counts[color],
+
+            pointRadius: 3.5,
+            pointHoverRadius: 7,
+            backgroundColor: COLORS[color],
+            borderColor: COLORS[color],
+            // pointBackgroundColor: 'transparent', // 포인터 배경 없애기
+            // pointBorderWidth: 3 // 포인터 테두리 굵기
+            // borderWidth: 2.5
+        });
+    }
+    chart.data.datasets = chart_dataset;
+    chart.data.labels = dates;
+    chart.update();
+}
+
+// 특정 지점에 대한 전체 기간 완등률 차트로 수정하는 함수
+function editChartToSuccessRateBySpot(canvas_id, spot) {
+    const chart = getMyChart(canvas_id);
+    
+    // climbing_data에서 spot에 해당하는 날짜와 데이터만 필터링
+    const filtered_data = climbing_data.filter(record => record.spot === spot);
+
+    // 만약 배열이 비어있으면 차트 업데이트하지 않고 alert 띄우고 함수 종료
+    if (filtered_data.length === 0) {
+        alert(`${spot}은(는) 간 적이 없어요!`);
+        return;
+    }
+
+    const dates = chartDates(filtered_data);
+    const spots = chartSpots(filtered_data);
+    const success_rates = successRates(filtered_data);
+
+    const counts = problemCounts(filtered_data); // { tries_counts: {...}, successes_counts: {...} }
+
+    const chart_dataset = [];
+
+    // console.log(dates);
+    // console.log(spots);
+    // console.log(success_rates);
+
+    for (const color in COLORS) {
+        chart_dataset.push({
+            label: color, // 데이터 제목
+            data: success_rates[color], // 데이터
+
+            // dataset 안에 지점/완등/성공 문제 수도 같이 넣어놓기
+            spots: spots, // 지점
+            tries: counts.tries_counts[color], // 시도 문제 수
+            successes: counts.successes_counts[color], // 완등 문제 수
+
+            pointRadius: 3.5,
+            pointHoverRadius: 7,
+            backgroundColor: COLORS[color],
+            borderColor: COLORS[color],
+            // pointBackgroundColor: 'transparent', // 포인터 배경 없애기
+            // pointBorderWidth: 3 // 포인터 테두리 굵기
+            // borderWidth: 2.5
+        });
+    }
+    chart.data.datasets = chart_dataset;
+    chart.data.labels = dates;
+    chart.update();
+}
+
+
+
+// climbing.html에서 body onload="init()" => 페이지 로드되면 init 함수 실행됨.
 async function init() {
-    const data = await load_climbing_data();
+    await load_climbing_data();
     apply_saved_columns();
-    successRateChart("success_rate_chart", climbing_data=data);
+    successRateChart("success-rate-chart");
 }

@@ -23,12 +23,27 @@
         <hr>
 
         <div id="success_chart_container">
-            <canvas id="success_rate_chart"></canvas>
+            <canvas id="success-rate-chart"></canvas>
         </div>
 
         <!-- 차트 편집 버튼 -->
         <div id="edit-chart-button-grid">
-            <button class="edit-chart-button"></button>
+            <button id="edit-to-success-rate" class="edit-chart-button" onclick="editChartToSuccessRate('success-rate-chart')">난이도 별 완등률</button>
+            <select class="edit-chart-dropdown" onchange="editChartToSuccessRateBySpot('success-rate-chart', this.value)">
+                <option value="" selected disabled>지점 선택</option>
+                <option value="더클라임 양재">더클라임 양재</option>
+                <option value="더클라임 강남">더클라임 강남</option>
+                <option value="더클라임 논현">더클라임 논현</option>
+                <option value="더클라임 신사">더클라임 신사</option>
+                <option value="더클라임 성수">더클라임 성수</option>
+                <option value="더클라임 사당">더클라임 사당</option>
+                <option value="더클라임 이수">더클라임 이수</option>
+                <option value="더클라임 신림">더클라임 신림</option>
+                <option value="더클라임 문래">더클라임 문래</option>
+                <option value="더클라임 연남">더클라임 연남</option>
+                <option value="더클라임 마곡">더클라임 마곡</option>
+                <option value="더클라임 일산">더클라임 일산</option>
+            </select>
         </div>
         
         <!-- 색상 표시 버튼 -->
