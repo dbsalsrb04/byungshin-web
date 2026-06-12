@@ -1,0 +1,72 @@
+/*
+    card container class='card-grid'
+    그리드 內 카드  class='card'
+*/
+
+.card-grid {
+    margin: auto;
+    display: grid;
+    width: 1000px;
+    /* 5XN 그리드 */
+    grid-template-columns: repeat(5, 200px); /* 길이가 전부 200px인 열 N개 */
+    grid-auto-rows: 120px; /* 행 높이는 자동으로 120px */
+    gap: 10px;
+
+    padding: 10px;
+}
+
+.card {
+    text-decoration: none;
+    color: inherit;
+
+    width: 200px;
+    height: 120px;
+
+    border-radius: 12px;
+    background: linear-gradient(135deg, #AEAEAE, #EAEAEA);
+
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
+
+    transition:
+        transform 300ms cubic-bezier(0.2, 1.5, 0.5, 1),
+        box-shadow 300ms ease,
+        border-color 300ms ease;
+}
+
+.card:hover {
+    transform: scale(1.02) translateY(-8px);
+    border: 1px solid rgba(0,0,0,0.3);
+    
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.75);
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+    .card-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 150px); /* 길이가 전부 200px인 열 2개 */
+        grid-auto-rows: 100px; /* 행 높이 자동 120px */
+        gap: 10px;
+
+        padding: 10px;
+    }
+
+    .card {
+        text-decoration: none;
+        color: inherit;
+        font-size: 14px;
+
+        width: 150px;
+        height: 100px;
+
+        border-radius: 12px;
+        background: linear-gradient(135deg, #AEAEAE, #EAEAEA);
+
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
+
+        transition:
+            transform 300ms cubic-bezier(0.2, 1.5, 0.5, 1),
+            box-shadow 300ms ease,
+            border-color 300ms ease;
+    }
+}

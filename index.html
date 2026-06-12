@@ -9,12 +9,23 @@
 
         <script src="index.js" defer></script>
         <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="./card.css">
     </head>
 
     <body onload="init()">
-        <b id="resolution"></b>
+        <div id="resolution"></div>
         
-        <h1>BYUNGSHIN WEB</h1>
+        <div class="title-container">
+            <!-- img 의 className에 wrapper 붙이면 개신기하게 움직임 -->
+             
+            <div id="mingyu-wrapper-1" class="mingyu-wrapper"><img src="./mingyu/pictures/smile-mingyu.jpg" class="spinning-mingyu" id="spinning-mingyu-1" alt="민규"></div>
+            <div id="mingyu-wrapper-2" class="mingyu-wrapper"><img src="./mingyu/pictures/smile-mingyu.jpg" class="spinning-mingyu" id="spinning-mingyu-2" alt="민규"></div>
+            <div id="mingyu-wrapper-3" class="mingyu-wrapper"><img src="./mingyu/pictures/smile-mingyu.jpg" class="spinning-mingyu" id="spinning-mingyu-3" alt="민규"></div>
+            <div id="mingyu-wrapper-4" class="mingyu-wrapper"><img src="./mingyu/pictures/smile-mingyu.jpg" class="spinning-mingyu" id="spinning-mingyu-4" alt="민규"></div>
+            <div id="mingyu-wrapper-5" class="mingyu-wrapper"><img src="./mingyu/pictures/smile-mingyu.jpg" class="spinning-mingyu" id="spinning-mingyu-5" alt="민규"></div>
+            <div id="mingyu-wrapper-6" class="mingyu-wrapper"><img src="./mingyu/pictures/smile-mingyu.jpg" class="spinning-mingyu" id="spinning-mingyu-6" alt="민규"></div>
+            <h1>BYUNGSHIN WEB</h1>
+        </div>
         <hr>
         <!-- 윤민규 -->
         <div id="mingyu">
@@ -30,6 +41,9 @@
                 </a>
                 <a class="card" target="_self" href="./mingyu/climbing/climbing.html">
                     <h3>클라이밍 기록</h3>
+                </a>
+                <a class="card" target="_self" href="./mingyu/about_climbing/index.html">
+                    <h3>클라이밍이란..</h3>
                 </a>
                 <a class="card" target="_self" href="./mingyu/test/index.html">
                     <h3>TEST</h3>

@@ -2,70 +2,92 @@
     text-align: center;
 }
 
-.card-grid {
-    margin: auto;
-    display: grid;
-    width: 1000px;
-    /* 5XN 그리드 */
-    grid-template-columns: repeat(5, 200px); /* 길이가 전부 200px인 열 N개 */
-    grid-auto-rows: 120px; /* 행 높이는 자동으로 120px */
-    gap: 10px;
-
-    padding: 10px;
+#resolution {
+    text-align: left !important;
+    font-size: 8pt;
 }
 
-.card {
-    text-decoration: none;
-    color: inherit;
+/* === 설명 ===
+- 우선 구조는 .mingyu-wrapper > .spinning-mingyu 이고, 실제 태그는 div > img
+   그리고 id로는 #mingyu-wrapper-N > #spinning-mingyu-N 이다.
 
-    width: 200px;
-    height: 120px;
+- h1과 같은 div(.title-container) 안에 있는데,
+  .mingyu-wrapper의 position: absolute로 해주어 모양이 바뀌지 않게 해주었다.
 
-    border-radius: 12px;
-    background: linear-gradient(135deg, #AEAEAE, #EAEAEA);
+- .mingyu-wrapper는 좌우 이동하기 위한 태그. 아래의 .spinning-mingyu img 태그는
+  클릭했을 때 사라지는 애니메이션을 위한 태그이다. 애니메이션을 서로 달리 주기 위해
+  분리했다.
 
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
+- mingyu-wrapper들은 반반 서로 다른 방향으로 다른 속도로 움직인다.
+  그것이 아래에 @keyframes로 각각 [spin-from-left], [spin-from-right] 로 정의되어 있다.
 
-    transition:
-        transform 300ms cubic-bezier(0.2, 1.5, 0.5, 1),
-        box-shadow 300ms ease,
-        border-color 300ms ease;
+- index.js에 있는 이벤트리스너로 spinning-mingyu가 클릭됐을 때의 동작을 정의한다.
+  그때 이 파일에서 만들어놓았던 .dead 애니메이션이 실행된다.
+  그리고 사라짐.
+*/
+/* div */
+.mingyu-wrapper {
+    position: absolute;
+    left: calc(50% - 25px);
+}
+/* div > img */
+.spinning-mingyu {
+    width: 60px;
+    height: 60px;
+    border-radius: 60px;
+}
+/* 마우스 올렸을 때 */
+.spinning-mingyu:hover {
+    outline: 3px solid #000000;
 }
 
-.card:hover {
-    transform: scale(1.02) translateY(-8px);
-    border: 1px solid rgba(0,0,0,0.3);
-    
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.75);
+/* Mingyu Img 눌렀을 때 */
+.dead {
+    animation: die 800ms ease-in forwards;
+    pointer-events: none; /* 사라질 때 추가클릭 안됨 */
 }
-
-/* 모바일 */
-@media (max-width: 768px) {
-    .card-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 150px); /* 길이가 전부 200px인 열 2개 */
-        grid-auto-rows: 100px; /* 행 높이 자동 120px */
-        gap: 10px;
-
-        padding: 10px;
+/* 왼쪽 시작 */
+#mingyu-wrapper-1 { animation: spin-from-left  3s linear infinite alternate; }
+#mingyu-wrapper-2 { animation: spin-from-left  4s linear infinite alternate; }
+#mingyu-wrapper-3 { animation: spin-from-left  5s linear infinite alternate; }
+/* 오른쪽 시작 */
+#mingyu-wrapper-4 { animation: spin-from-right 3s linear infinite alternate; }
+#mingyu-wrapper-5 { animation: spin-from-right 4s linear infinite alternate; }
+#mingyu-wrapper-6 { animation: spin-from-right 5s linear infinite alternate; }
+@keyframes spin-from-left {
+    0% {
+        transform: translateX(-250px) rotate(0deg);
     }
+    50% {
+        transform: translateX(250px) rotate(180deg);
+    }
+    100% {
+        transform: translateX(-250px) rotate(360deg);
+    }
+}
+@keyframes spin-from-right {
+    0% {
+        transform: translateX(250px) rotate(360deg);
+    }
+    50% {
+        transform: translateX(-250px) rotate(180deg);
+    }
+    100% {
+        transform: translateX(250px) rotate(0deg);
+    }
+}
 
-    .card {
-        text-decoration: none;
-        color: inherit;
-        font-size: 14px;
-
-        width: 150px;
-        height: 100px;
-
-        border-radius: 12px;
-        background: linear-gradient(135deg, #AEAEAE, #EAEAEA);
-
-        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.5);
-
-        transition:
-            transform 300ms cubic-bezier(0.2, 1.5, 0.5, 1),
-            box-shadow 300ms ease,
-            border-color 300ms ease;
+@keyframes die {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+    8% {
+        opacity: 1;
+        transform: translateY(150px) scale(1.5) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-150px) scale(0.1) rotate(1440deg);
     }
 }
