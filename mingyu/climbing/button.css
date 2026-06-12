@@ -32,7 +32,7 @@
 }
 
 @media (max-width: 768px) {
-    #button_bar {
+    #color-display-button-bar {
         z-index: 1000;
         position: sticky;
         top: 0px;
