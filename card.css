@@ -7,6 +7,7 @@
     margin: auto;
     display: grid;
     width: 1000px;
+    max-width: 100%;
     /* 5XN 그리드 */
     grid-template-columns: repeat(5, 200px); /* 길이가 전부 200px인 열 N개 */
     grid-auto-rows: 120px; /* 행 높이는 자동으로 120px */
@@ -44,6 +45,7 @@
 @media (max-width: 768px) {
     .card-grid {
         display: grid;
+        max-width: 100%;
         grid-template-columns: repeat(2, 150px); /* 길이가 전부 200px인 열 2개 */
         grid-auto-rows: 100px; /* 행 높이 자동 120px */
         gap: 10px;

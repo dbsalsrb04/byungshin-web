@@ -80,7 +80,7 @@ async function load_data() {
 }
 
 async function init() {
-    data = await load_data();
+    const data = await load_data();
     
     for (const record of data) {
         dates.push(record.date);
