@@ -267,9 +267,19 @@ function successRateChart(canvas_id) {
                         }
                     }
                 },
-                legend: { // 범례
+                // 범례
+                legend: {
                     display: true, // 범례 보이기
                     position: 'left', // 범례 위치
+                    labels: {
+                        font: {
+                            size: 10,
+                            weight: "bold"
+                        },
+                        boxWidth: 20, // 색상 네모 가로
+                        boxHeight: 10, // 색상 네모 세로
+                        padding: 10 // 색상 간 간격
+                    }
                 },
             },
             // Scales
