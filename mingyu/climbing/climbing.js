@@ -278,7 +278,7 @@ function successRateChart(canvas_id) {
                         },
                         boxWidth: 20, // 색상 네모 가로
                         boxHeight: 10, // 색상 네모 세로
-                        padding: 10 // 색상 간 간격
+                        padding: 8 // 색상 간 간격
                     }
                 },
             },
