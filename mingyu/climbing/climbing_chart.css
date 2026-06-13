@@ -1,12 +1,13 @@
 #success_chart_container {
     margin: auto;
-    width: 800px;
-    height: 400px;
+    width: 1000px;
+    height: 500px;
     background-color: #EEFFFF;
 }
 
 #success-rate-chart {
-    width: 800px;
+    width: 1000px;
+    height: 500px;
 }
 
 @media (max-width: 768px) {

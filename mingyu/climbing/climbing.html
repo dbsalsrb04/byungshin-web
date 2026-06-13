@@ -27,9 +27,10 @@
         </div>
 
         <!-- 차트 편집 버튼 -->
+        <span>- 차트 편집 -</span>
         <div id="edit-chart-button-grid">
-            <button id="edit-to-success-rate" class="edit-chart-button" onclick="editChartToSuccessRate('success-rate-chart')">난이도 별 완등률</button>
-            <select class="edit-chart-dropdown" onchange="editChartToSuccessRateBySpot('success-rate-chart', this.value)">
+            <div id="edit-to-success-rate" class="edit-chart-button" onclick="editChartToSuccessRate('success-rate-chart')">난이도별 완등률</div>
+            <select id="edit-chart-to-by-spot" class="edit-chart-dropdown" onchange="editChartToSuccessRateBySpot('success-rate-chart', this.value)">
                 <option value="" selected disabled>지점 선택</option>
                 <option value="더클라임 양재">더클라임 양재</option>
                 <option value="더클라임 강남">더클라임 강남</option>
@@ -48,17 +49,17 @@
         
         <!-- 색상 표시 버튼 -->
         <div id="color-display-button-bar">
-            <button class="display_button" id="black_display_button" onclick="display_column('black')">숨기기</button>
-            <button class="display_button" id="brown_display_button" onclick="display_column('brown')">숨기기</button>
-            <button class="display_button" id="gray_display_button" onclick="display_column('gray')">숨기기</button>
-            <button class="display_button" id="purple_display_button" onclick="display_column('purple')">숨기기</button>
-            <button class="display_button" id="pink_display_button" onclick="display_column('pink')">숨기기</button>
-            <button class="display_button" id="red_display_button" onclick="display_column('red')">숨기기</button>
-            <button class="display_button" id="blue_display_button" onclick="display_column('blue')">숨기기</button>
-            <button class="display_button" id="green_display_button" onclick="display_column('green')">숨기기</button>
-            <button class="display_button" id="orange_display_button" onclick="display_column('orange')">숨기기</button>
-            <button class="display_button" id="yellow_display_button" onclick="display_column('yellow')">숨기기</button>
-            <button class="display_button" id="white_display_button" onclick="display_column('white')">숨기기</button>
+            <button class="display_button" style="--color:#000000;" id="black_display_button" onclick="display_column('black')">숨기기</button>
+            <button class="display_button" style="--color:#A52A2A;" id="brown_display_button" onclick="display_column('brown')">숨기기</button>
+            <button class="display_button" style="--color:#808080;" id="gray_display_button" onclick="display_column('gray')">숨기기</button>
+            <button class="display_button" style="--color:#800080;" id="purple_display_button" onclick="display_column('purple')">숨기기</button>
+            <button class="display_button" style="--color:#FF00FF;" id="pink_display_button" onclick="display_column('pink')">숨기기</button>
+            <button class="display_button" style="--color:#FF0000;" id="red_display_button" onclick="display_column('red')">숨기기</button>
+            <button class="display_button" style="--color:#0000FF;" id="blue_display_button" onclick="display_column('blue')">숨기기</button>
+            <button class="display_button" style="--color:#00FF00;" id="green_display_button" onclick="display_column('green')">숨기기</button>
+            <button class="display_button" style="--color:#FF8000;" id="orange_display_button" onclick="display_column('orange')">숨기기</button>
+            <button class="display_button" style="--color:#FFFF00;" id="yellow_display_button" onclick="display_column('yellow')">숨기기</button>
+            <button class="display_button" style="--color:#FFFFFF;" id="white_display_button" onclick="display_column('white')">숨기기</button>
         </div>
 
         <div id="table_container">
