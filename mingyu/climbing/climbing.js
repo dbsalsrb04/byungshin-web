@@ -274,7 +274,7 @@ function successRateChart(canvas_id) {
                     labels: {
                         font: {
                             size: 10,
-                            weight: "bold"
+                            // weight: "bold"
                         },
                         boxWidth: 20, // 색상 네모 가로
                         boxHeight: 10, // 색상 네모 세로
