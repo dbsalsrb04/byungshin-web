@@ -537,6 +537,10 @@ function editChartToSuccessRateBySpot(canvas_id, spot) {
     chart.update();
 }
 
+// 마지막 10개 기록 완등률 차트로 수정하는 함수.
+function editChartToLast10Records(canvas_id) {
+
+}
 
 // climbing.html에서 body onload="init()" => 페이지 로드되면 init 함수 실행됨.
 async function init() {
