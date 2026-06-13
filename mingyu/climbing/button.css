@@ -2,8 +2,8 @@
     margin: auto;
     display: grid;
     /* 지금은 버튼 2개라서 그냥 작게 해놓음 */
-    width: 300px;
-    grid-template-columns: repeat(2, 120px);
+    width: 360px;
+    grid-template-columns: repeat(3, 120px);
     padding: 10px;
     gap: 10px;
 }
@@ -40,7 +40,7 @@
     cursor: pointer;
     
     width: 120px;
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: #F5F5F5;
     border: 1px solid #C0C0C0;
     
@@ -73,10 +73,14 @@
 
     #edit-chart-button-grid {
         width: 300px;
-        grid-template-columns: repeat(2, 100px);
+        grid-template-columns: repeat(3, 100px);
     }
 
     .edit-chart-button {
+        width: 100px;
+    }
+
+    .edit-chart-dropdown {
         width: 100px;
     }
 }
