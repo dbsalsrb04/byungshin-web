@@ -540,7 +540,46 @@ function editChartToSuccessRateBySpot(canvas_id, spot) {
 // 마지막 10개 기록 완등률 차트로 수정하는 함수.
 function editChartToLast10Records(canvas_id) {
     const chart = getMyChart(canvas_id);
-    console.log(chart.data);
+
+    const theclimb_data = climbing_data.filter(record => record.spot.includes("더클라임")); // 더클라임 아닌 지점 제외한 데이터
+    const totalDataLength = theclimb_data.length; // 더클라임 아닌 지점 제외한 데이터 개수
+    const last10TheclimbData = theclimb_data.slice(totalDataLength - 10); // totalDataLengh - 10 인덱스부터 마지막까지 전부
+    // 우선 전체 기록 중 더클라임 지점만 있는 배열의 길이 구함
+    // 그 길이에서 N만큼 빼서 마지막 N개만 있는 데이터로 바꾸기
+    
+    
+    const dates = chartDates(last10TheclimbData);
+    const spots = chartSpots(last10TheclimbData);
+
+    const success_rates = successRates(last10TheclimbData);
+    
+    const counts = problemCounts(last10TheclimbData); // { tries_counts: {...}, successes_counts: {...} }
+
+    const chart_dataset = [];
+
+    // 모든 수정 함수에서 이 아래가 반복되긴 하는데, 그냥 귀찮음.
+    for (const color in COLORS) {
+        chart_dataset.push({
+            label: color, // 데이터 제목
+            data: success_rates[color], // 데이터
+
+            // dataset 안에 지점/완등/성공 문제 수도 같이 넣어놓기
+            spots: spots, // 지점
+            tries: counts.tries_counts[color], // 시도 문제 수
+            successes: counts.successes_counts[color], // 완등 문제 수
+
+            pointRadius: 3.5,
+            pointHoverRadius: 7,
+            backgroundColor: COLORS[color],
+            borderColor: COLORS[color],
+            // pointBackgroundColor: 'transparent', // 포인터 배경 없애기
+            // pointBorderWidth: 3 // 포인터 테두리 굵기
+            // borderWidth: 2.5
+        });
+    }
+    chart.data.datasets = chart_dataset;
+    chart.data.labels = dates;
+    chart.update();
 }
 
 // climbing.html에서 body onload="init()" => 페이지 로드되면 init 함수 실행됨.
