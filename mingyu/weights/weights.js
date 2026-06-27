@@ -36,7 +36,7 @@ function chartCtx(canvas_id) {
             },
             scales: { // x,y축 설정 관련
                 x: { // x축
-                    grid: { display: true } // x축 격자선(=세로선) 숨김
+                    grid: { display: false } // x축 격자선(=세로선) 숨김
                 },
                 y: {
                     min: 60, // y축 최솟값
