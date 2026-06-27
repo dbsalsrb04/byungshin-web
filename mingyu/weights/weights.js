@@ -39,7 +39,7 @@ function chartCtx(canvas_id) {
                     grid: { display: true } // x축 격자선(=세로선) 숨김
                 },
                 y: {
-                    min: 61, // y축 최솟값
+                    min: 60, // y축 최솟값
                     max: 64, // y축 최댓값
                     border: { dash: [0,0] } // 점선
                 }
