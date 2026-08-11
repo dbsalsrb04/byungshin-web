@@ -1630,5 +1630,37 @@
             "yellow" : "",
             "white"  : ""
         }
+    },
+    {
+        "spot": "더클라임 양재",
+        "date": "2026-8-10",
+
+        "tries": {
+            "black"  : "",
+            "brown"  : "",
+            "gray"   : "",
+            "purple" : "",
+            "pink"   : 4,
+            "red"    : 22,
+            "blue"   : 10,
+            "green"  : "",
+            "orange" : "",
+            "yellow" : "",
+            "white"  : ""
+        },
+
+        "successes": {
+            "black"  : "",
+            "brown"  : "",
+            "gray"   : "",
+            "purple" : "",
+            "pink"   : 3,
+            "red"    : 17,
+            "blue"   : 10,
+            "green"  : "",
+            "orange" : "",
+            "yellow" : "",
+            "white"  : ""
+        }
     }
 ]
